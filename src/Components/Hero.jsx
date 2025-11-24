@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Github, Linkedin, Twitter, Sparkles } from 'lucide-react';
+import { ArrowRight, Github, Linkedin, Twitter } from 'lucide-react';
 import MagneticButton from './Common/MagneticButton';
 import { fadeInUp, staggerContainer, scaleIn } from '../utils/animations';
 
@@ -25,38 +25,8 @@ const Hero = () => {
         return () => clearInterval(timer);
     }, []);
 
-    // Simplified floating icons - reduced from 3 to 1 for better performance
-    const floatingIcon = useMemo(() => ({
-        Icon: Sparkles,
-        delay: 0,
-        duration: 4,
-        x: -15,
-        y: -25
-    }), []);
-
     return (
-        <div className="min-h-screen flex flex-col justify-center items-center text-center relative z-10 px-4 py-20">
-            {/* Single optimized floating icon */}
-            <motion.div
-                className="absolute pointer-events-none opacity-30"
-                style={{
-                    left: '15%',
-                    top: '25%',
-                }}
-                animate={{
-                    y: [0, floatingIcon.y, 0],
-                    x: [0, floatingIcon.x, 0],
-                    opacity: [0.2, 0.4, 0.2]
-                }}
-                transition={{
-                    duration: floatingIcon.duration,
-                    delay: floatingIcon.delay,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                }}
-            >
-                <floatingIcon.Icon size={32} className="text-accent" />
-            </motion.div>
+        <div className="min-h-screen flex flex-col justify-center items-center text-center relative z-10 px-4 py-20">{/* Removed floating icon for better performance */}
 
             <motion.div
                 variants={staggerContainer}
@@ -64,10 +34,10 @@ const Hero = () => {
                 animate="visible"
                 className="max-w-5xl mx-auto relative z-10"
             >
-                {/* Badge - Fixed spacing */}
+                {/* Badge - Fixed positioning to avoid navbar overlap */}
                 <motion.span
                     variants={scaleIn}
-                    className="inline-block px-6 py-3 rounded-full glass text-accent text-sm md:text-base font-medium mb-12 border border-accent/30 shadow-lg shadow-accent/20"
+                    className="inline-block px-6 py-3 rounded-full glass text-accent text-sm md:text-base font-medium mb-8 mt-6 border border-accent/30 shadow-lg shadow-accent/20"
                 >
                     <span className="mr-2">✨</span>
                     Full Stack Developer & Creative Technologist

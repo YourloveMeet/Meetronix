@@ -238,26 +238,6 @@ html {
   animation-delay: 2s;
 }
 
-.animation-delay-4000 {
-  animation-delay: 4s;
-}
-
-/* Gradient Text */
-.gradient-text {
-  @apply bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent;
-}
-
-.gradient-text-animated {
-  @apply bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent;
-  background-size: 200% auto;
-  animation: gradient-shift 3s linear infinite;
-}
-
-/* Card Effects */
-.card-hover-glow {
-  transition: box-shadow 0.3s ease;
-}
-
 .card-hover-glow:hover {
   box-shadow: 0 0 30px rgba(56, 189, 248, 0.3);
 }

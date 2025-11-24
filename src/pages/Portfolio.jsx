@@ -13,6 +13,20 @@ const Portfolio = () => {
         ? projectsData
         : projectsData.filter(p => p.category === selectedCategory);
 
+    // Lock body scroll when modal is open
+    React.useEffect(() => {
+        if (selectedProject) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+
+        // Cleanup on unmount
+        return () => {
+            document.body.style.overflow = 'unset';
+        };
+    }, [selectedProject]);
+
     return (
         <div className="min-h-screen pt-24 pb-12">
             <div className="container-custom">
@@ -47,8 +61,8 @@ const Portfolio = () => {
                                 whileHover={{ scale: 1.05, y: -2 }}
                                 whileTap={{ scale: 0.95 }}
                                 className={`px-6 py-3 rounded-full font-semibold transition-all ${selectedCategory === category.id
-                                        ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg shadow-accent/30'
-                                        : 'glass border border-white/10 text-slate-300 hover:border-accent/30'
+                                    ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg shadow-accent/30'
+                                    : 'glass border border-white/10 text-slate-300 hover:border-accent/30'
                                     }`}
                             >
                                 <span className="mr-2">{category.icon}</span>
@@ -142,7 +156,7 @@ const Portfolio = () => {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
-                            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+                            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] flex items-center justify-center p-4 overflow-y-auto"
                             onClick={() => setSelectedProject(null)}
                         >
                             <motion.div
@@ -150,7 +164,7 @@ const Portfolio = () => {
                                 animate={{ scale: 1, y: 0 }}
                                 exit={{ scale: 0.9, y: 50 }}
                                 onClick={(e) => e.stopPropagation()}
-                                className="glass-card max-w-4xl w-full max-h-[90vh] overflow-y-auto rounded-3xl p-8 border border-white/20"
+                                className="glass-card max-w-4xl w-full my-8 rounded-3xl p-8 border border-white/20"
                             >
                                 <div className="flex justify-between items-start mb-6">
                                     <div>
