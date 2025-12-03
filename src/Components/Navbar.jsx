@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import ReactDOM from 'react-dom';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Home, User, Briefcase, Settings, BookOpen } from 'lucide-react';
@@ -9,8 +10,15 @@ const Navbar = () => {
     const location = useLocation();
 
     useEffect(() => {
+        let ticking = false;
         const handleScroll = () => {
-            setScrolled(window.scrollY > 50);
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    setScrolled(window.scrollY > 50);
+                    ticking = false;
+                });
+                ticking = true;
+            }
         };
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
@@ -74,8 +82,8 @@ const Navbar = () => {
                                     whileHover={{ y: -2 }}
                                     whileTap={{ scale: 0.95 }}
                                     className={`px-6 py-3 rounded-full font-medium transition-all relative group flex items-center gap-2 ${active
-                                            ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg shadow-accent/30'
-                                            : 'text-slate-300 hover:text-white hover:bg-white/5'
+                                        ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg shadow-accent/30'
+                                        : 'text-slate-300 hover:text-white hover:bg-white/5'
                                         }`}
                                 >
                                     <Icon size={18} />
@@ -101,85 +109,88 @@ const Navbar = () => {
             </div>
 
             {/* Mobile Menu Overlay */}
-            <AnimatePresence>
-                {isOpen && (
-                    <>
-                        {/* Backdrop */}
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            className="fixed inset-0 bg-black/60 backdrop-blur-sm lg:hidden"
-                            onClick={() => setIsOpen(false)}
-                        />
+            {ReactDOM.createPortal(
+                <AnimatePresence>
+                    {isOpen && (
+                        <>
+                            {/* Backdrop */}
+                            <motion.div
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                className="fixed inset-0 bg-black/60 backdrop-blur-sm lg:hidden z-[60]"
+                                onClick={() => setIsOpen(false)}
+                            />
 
-                        {/* Menu */}
-                        <motion.div
-                            initial={{ x: '100%' }}
-                            animate={{ x: 0 }}
-                            exit={{ x: '100%' }}
-                            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-                            className="fixed top-0 right-0 h-full w-80 glass border-l border-white/10 lg:hidden backdrop-blur-2xl shadow-2xl"
-                        >
-                            <div className="flex flex-col p-8 h-full">
-                                {/* Close Button */}
-                                <div className="flex justify-between items-center mb-12">
-                                    <span className="text-xl font-bold gradient-text">Menu</span>
-                                    <motion.button
-                                        whileHover={{ rotate: 90 }}
-                                        whileTap={{ scale: 0.9 }}
-                                        onClick={() => setIsOpen(false)}
-                                        className="p-2 glass rounded-lg"
-                                    >
-                                        <X size={24} />
-                                    </motion.button>
-                                </div>
+                            {/* Menu */}
+                            <motion.div
+                                initial={{ x: '100%' }}
+                                animate={{ x: 0 }}
+                                exit={{ x: '100%' }}
+                                transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                                className="fixed top-0 right-0 h-full w-80 bg-slate-900 border-l border-white/10 lg:hidden shadow-2xl z-[70]"
+                            >
+                                <div className="flex flex-col p-8 h-full">
+                                    {/* Close Button */}
+                                    <div className="flex justify-between items-center mb-12">
+                                        <span className="text-xl font-bold gradient-text">Menu</span>
+                                        <motion.button
+                                            whileHover={{ rotate: 90 }}
+                                            whileTap={{ scale: 0.9 }}
+                                            onClick={() => setIsOpen(false)}
+                                            className="p-2 glass rounded-lg"
+                                        >
+                                            <X size={24} />
+                                        </motion.button>
+                                    </div>
 
-                                {/* Menu Links */}
-                                <div className="flex flex-col space-y-2 flex-1">
-                                    {navLinks.map((link, index) => {
-                                        const Icon = link.icon;
-                                        const active = isActive(link.path);
+                                    {/* Menu Links */}
+                                    <div className="flex flex-col space-y-2 flex-1">
+                                        {navLinks.map((link, index) => {
+                                            const Icon = link.icon;
+                                            const active = isActive(link.path);
 
-                                        return (
-                                            <motion.div
-                                                key={link.name}
-                                                initial={{ opacity: 0, x: 50 }}
-                                                animate={{ opacity: 1, x: 0 }}
-                                                transition={{ delay: index * 0.1 }}
-                                            >
-                                                <Link
-                                                    to={link.path}
-                                                    onClick={() => setIsOpen(false)}
+                                            return (
+                                                <motion.div
+                                                    key={link.name}
+                                                    initial={{ opacity: 0, x: 50 }}
+                                                    animate={{ opacity: 1, x: 0 }}
+                                                    transition={{ delay: index * 0.1 }}
                                                 >
-                                                    <motion.div
-                                                        whileHover={{ x: 8 }}
-                                                        whileTap={{ scale: 0.95 }}
-                                                        className={`flex items-center gap-4 p-4 rounded-xl font-medium transition-all ${active
+                                                    <Link
+                                                        to={link.path}
+                                                        onClick={() => setIsOpen(false)}
+                                                    >
+                                                        <motion.div
+                                                            whileHover={{ x: 8 }}
+                                                            whileTap={{ scale: 0.95 }}
+                                                            className={`flex items-center gap-4 p-4 rounded-xl font-medium transition-all ${active
                                                                 ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg'
                                                                 : 'text-slate-300 hover:bg-white/5'
-                                                            }`}
-                                                    >
-                                                        <Icon size={22} />
-                                                        <span className="text-lg">{link.name}</span>
-                                                    </motion.div>
-                                                </Link>
-                                            </motion.div>
-                                        );
-                                    })}
-                                </div>
+                                                                }`}
+                                                        >
+                                                            <Icon size={22} />
+                                                            <span className="text-lg">{link.name}</span>
+                                                        </motion.div>
+                                                    </Link>
+                                                </motion.div>
+                                            );
+                                        })}
+                                    </div>
 
-                                {/* Footer */}
-                                <div className="pt-8 border-t border-white/10">
-                                    <p className="text-sm text-slate-400 text-center">
-                                        © 2024 Meetronix
-                                    </p>
+                                    {/* Footer */}
+                                    <div className="pt-8 border-t border-white/10">
+                                        <p className="text-sm text-slate-400 text-center">
+                                            © 2024 Meetronix
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
-                        </motion.div>
-                    </>
-                )}
-            </AnimatePresence>
+                            </motion.div>
+                        </>
+                    )}
+                </AnimatePresence>,
+                document.body
+            )}
         </nav>
     );
 };

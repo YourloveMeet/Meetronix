@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ReactDOM from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, Github, Filter } from 'lucide-react';
 import RevealOnScroll from '../Components/Common/RevealOnScroll';
@@ -150,100 +151,103 @@ const Portfolio = () => {
                 </motion.div>
 
                 {/* Project Modal */}
-                <AnimatePresence>
-                    {selectedProject && (
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] flex items-center justify-center p-4 overflow-y-auto"
-                            onClick={() => setSelectedProject(null)}
-                        >
+                {ReactDOM.createPortal(
+                    <AnimatePresence>
+                        {selectedProject && (
                             <motion.div
-                                initial={{ scale: 0.9, y: 50 }}
-                                animate={{ scale: 1, y: 0 }}
-                                exit={{ scale: 0.9, y: 50 }}
-                                onClick={(e) => e.stopPropagation()}
-                                className="glass-card max-w-4xl w-full my-8 rounded-3xl p-8 border border-white/20"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] flex items-center justify-center p-4 overflow-y-auto"
+                                onClick={() => setSelectedProject(null)}
                             >
-                                <div className="flex justify-between items-start mb-6">
-                                    <div>
-                                        <h2 className="text-4xl font-bold gradient-text-animated mb-2">
-                                            {selectedProject.title}
-                                        </h2>
-                                        <div className="flex gap-4">
-                                            <a
-                                                href={selectedProject.liveUrl}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="text-accent hover:underline flex items-center gap-1"
-                                            >
-                                                <ExternalLink size={16} /> Live Demo
-                                            </a>
-                                            <a
-                                                href={selectedProject.githubUrl}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="text-slate-400 hover:text-white flex items-center gap-1"
-                                            >
-                                                <Github size={16} /> Source Code
-                                            </a>
+                                <motion.div
+                                    initial={{ scale: 0.9, y: 50 }}
+                                    animate={{ scale: 1, y: 0 }}
+                                    exit={{ scale: 0.9, y: 50 }}
+                                    onClick={(e) => e.stopPropagation()}
+                                    className="glass-card max-w-4xl w-full my-8 rounded-3xl p-8 border border-white/20 max-h-[90vh] overflow-y-auto"
+                                >
+                                    <div className="flex justify-between items-start mb-6">
+                                        <div>
+                                            <h2 className="text-4xl font-bold gradient-text-animated mb-2">
+                                                {selectedProject.title}
+                                            </h2>
+                                            <div className="flex gap-4">
+                                                <a
+                                                    href={selectedProject.liveUrl}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="text-accent hover:underline flex items-center gap-1"
+                                                >
+                                                    <ExternalLink size={16} /> Live Demo
+                                                </a>
+                                                <a
+                                                    href={selectedProject.githubUrl}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="text-slate-400 hover:text-white flex items-center gap-1"
+                                                >
+                                                    <Github size={16} /> Source Code
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <button
+                                            onClick={() => setSelectedProject(null)}
+                                            className="text-4xl text-slate-400 hover:text-white transition-colors"
+                                        >
+                                            ×
+                                        </button>
+                                    </div>
+
+                                    <p className="text-slate-300 mb-6 text-lg leading-relaxed">
+                                        {selectedProject.longDescription}
+                                    </p>
+
+                                    {/* Challenge & Solution */}
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                                        <div className="glass p-6 rounded-xl border border-orange-500/20">
+                                            <h3 className="text-xl font-bold text-orange-400 mb-3">Challenge</h3>
+                                            <p className="text-slate-300">{selectedProject.challenge}</p>
+                                        </div>
+                                        <div className="glass p-6 rounded-xl border border-green-500/20">
+                                            <h3 className="text-xl font-bold text-green-400 mb-3">Solution</h3>
+                                            <p className="text-slate-300">{selectedProject.solution}</p>
                                         </div>
                                     </div>
-                                    <button
-                                        onClick={() => setSelectedProject(null)}
-                                        className="text-4xl text-slate-400 hover:text-white transition-colors"
-                                    >
-                                        ×
-                                    </button>
-                                </div>
 
-                                <p className="text-slate-300 mb-6 text-lg leading-relaxed">
-                                    {selectedProject.longDescription}
-                                </p>
+                                    {/* Results */}
+                                    <div className="mb-6">
+                                        <h3 className="text-xl font-bold mb-3">Results</h3>
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                                            {selectedProject.results.map((result, i) => (
+                                                <div key={i} className="glass p-4 rounded-xl text-center border border-white/10">
+                                                    <p className="text-accent font-semibold">{result}</p>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
 
-                                {/* Challenge & Solution */}
-                                <div className="grid md:grid-cols-2 gap-6 mb-6">
-                                    <div className="glass p-6 rounded-xl border border-orange-500/20">
-                                        <h3 className="text-xl font-bold text-orange-400 mb-3">Challenge</h3>
-                                        <p className="text-slate-300">{selectedProject.challenge}</p>
+                                    {/* Technologies */}
+                                    <div>
+                                        <h3 className="text-xl font-bold mb-3">Technologies Used</h3>
+                                        <div className="flex flex-wrap gap-3">
+                                            {selectedProject.technologies.map((tech, i) => (
+                                                <span
+                                                    key={i}
+                                                    className="px-4 py-2 bg-accent/10 text-accent rounded-full border border-accent/30"
+                                                >
+                                                    {tech}
+                                                </span>
+                                            ))}
+                                        </div>
                                     </div>
-                                    <div className="glass p-6 rounded-xl border border-green-500/20">
-                                        <h3 className="text-xl font-bold text-green-400 mb-3">Solution</h3>
-                                        <p className="text-slate-300">{selectedProject.solution}</p>
-                                    </div>
-                                </div>
-
-                                {/* Results */}
-                                <div className="mb-6">
-                                    <h3 className="text-xl font-bold mb-3">Results</h3>
-                                    <div className="grid grid-cols-3 gap-4">
-                                        {selectedProject.results.map((result, i) => (
-                                            <div key={i} className="glass p-4 rounded-xl text-center border border-white/10">
-                                                <p className="text-accent font-semibold">{result}</p>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-
-                                {/* Technologies */}
-                                <div>
-                                    <h3 className="text-xl font-bold mb-3">Technologies Used</h3>
-                                    <div className="flex flex-wrap gap-3">
-                                        {selectedProject.technologies.map((tech, i) => (
-                                            <span
-                                                key={i}
-                                                className="px-4 py-2 bg-accent/10 text-accent rounded-full border border-accent/30"
-                                            >
-                                                {tech}
-                                            </span>
-                                        ))}
-                                    </div>
-                                </div>
+                                </motion.div>
                             </motion.div>
-                        </motion.div>
-                    )}
-                </AnimatePresence>
+                        )}
+                    </AnimatePresence>,
+                    document.body
+                )}
             </div>
         </div>
     );

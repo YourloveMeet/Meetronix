@@ -4,6 +4,7 @@ import { AnimatePresence } from 'framer-motion';
 import Navbar from './Components/Navbar';
 import ScrollProgress from './Components/Common/ScrollProgress';
 import AnimatedBackground from './Components/Common/AnimatedBackground';
+import ScrollToTop from './Components/Common/ScrollToTop';
 
 // Lazy load pages for better performance
 const Home = lazy(() => import('./pages/Home'));
@@ -22,7 +23,8 @@ const PageLoader = () => (
 function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-dark text-white relative overflow-hidden">
+      <div className="min-h-screen text-white relative overflow-hidden">
+        <ScrollToTop />
         {/* Animated Background */}
         <AnimatedBackground />
 

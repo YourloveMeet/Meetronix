@@ -54,7 +54,7 @@ const skillsData = [
     }
 ];
 
-const SkillCard = ({ skill, index }) => {
+const SkillCard = React.memo(({ skill, index }) => {
     const cardRef = useRef(null);
     const x = useMotionValue(0);
     const y = useMotionValue(0);
@@ -152,18 +152,11 @@ const SkillCard = ({ skill, index }) => {
                 ))}
             </div>
 
-            {/* Floating orb */}
-            <motion.div
-                className={`absolute -bottom-10 -right-10 w-40 h-40 bg-gradient-to-br ${skill.color} opacity-20 blur-3xl rounded-full`}
-                animate={{
-                    scale: [1, 1.2, 1],
-                    opacity: [0.2, 0.3, 0.2]
-                }}
-                transition={{ duration: 4, repeat: Infinity }}
-            />
         </motion.div>
     );
-};
+});
+
+SkillCard.displayName = 'SkillCard';
 
 const Skills = () => {
     return (
