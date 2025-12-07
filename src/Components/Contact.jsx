@@ -3,6 +3,29 @@ import { motion } from 'framer-motion';
 import { Mail, MapPin, Phone, Send } from 'lucide-react';
 
 const Contact = () => {
+    const [formData, setFormData] = React.useState({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+    });
+
+    const handleChange = (e) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value
+        });
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const { name, email, subject, message } = formData;
+
+        const mailtoLink = `mailto:meetronix010@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
+
+        window.location.href = mailtoLink;
+    };
+
     return (
         <div className="container mx-auto px-4">
             <motion.div
@@ -35,7 +58,7 @@ const Contact = () => {
                                 </div>
                                 <div>
                                     <h4 className="font-bold text-lg">Email Me</h4>
-                                    <p className="text-slate-400">hello@meetronix.dev</p>
+                                    <p className="text-slate-400">meetronix010@gmail.com</p>
                                 </div>
                             </div>
 
@@ -45,7 +68,7 @@ const Contact = () => {
                                 </div>
                                 <div>
                                     <h4 className="font-bold text-lg">Call Me</h4>
-                                    <p className="text-slate-400">+1 (555) 123-4567</p>
+                                    <p className="text-slate-400">+91 8780971548</p>
                                 </div>
                             </div>
 
@@ -55,7 +78,7 @@ const Contact = () => {
                                 </div>
                                 <div>
                                     <h4 className="font-bold text-lg">Location</h4>
-                                    <p className="text-slate-400">San Francisco, CA (Remote Available)</p>
+                                    <p className="text-slate-400">Ahmedabad , Gujarat , India</p>
                                 </div>
                             </div>
                         </div>
@@ -80,12 +103,16 @@ const Contact = () => {
                     transition={{ duration: 0.5 }}
                     className="glass-card p-8 rounded-2xl"
                 >
-                    <form className="space-y-6">
+                    <form className="space-y-6" onSubmit={handleSubmit}>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div className="space-y-2">
                                 <label className="text-sm font-medium text-slate-300">Name</label>
                                 <input
                                     type="text"
+                                    name="name"
+                                    value={formData.name}
+                                    onChange={handleChange}
+                                    required
                                     className="w-full bg-dark/50 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all"
                                     placeholder="John Doe"
                                 />
@@ -94,6 +121,10 @@ const Contact = () => {
                                 <label className="text-sm font-medium text-slate-300">Email</label>
                                 <input
                                     type="email"
+                                    name="email"
+                                    value={formData.email}
+                                    onChange={handleChange}
+                                    required
                                     className="w-full bg-dark/50 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all"
                                     placeholder="john@example.com"
                                 />
@@ -104,6 +135,10 @@ const Contact = () => {
                             <label className="text-sm font-medium text-slate-300">Subject</label>
                             <input
                                 type="text"
+                                name="subject"
+                                value={formData.subject}
+                                onChange={handleChange}
+                                required
                                 className="w-full bg-dark/50 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all"
                                 placeholder="Project Inquiry"
                             />
@@ -113,6 +148,10 @@ const Contact = () => {
                             <label className="text-sm font-medium text-slate-300">Message</label>
                             <textarea
                                 rows="4"
+                                name="message"
+                                value={formData.message}
+                                onChange={handleChange}
+                                required
                                 className="w-full bg-dark/50 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all resize-none"
                                 placeholder="Tell me about your project..."
                             ></textarea>
