@@ -44,7 +44,9 @@ const Projects = () => {
                                 <img 
                                     src={project.image} 
                                     alt={project.title}
+                                    loading="lazy"
                                     className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                                    style={{ willChange: 'transform' }}
                                 />
                                 <div className="absolute inset-0 bg-charcoal/5 group-hover:bg-transparent transition-colors duration-700" />
                                 

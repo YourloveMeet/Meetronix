@@ -27,8 +27,8 @@ const Hero = () => {
         <section className="relative min-h-[90vh] flex items-center pt-20 pb-12 overflow-hidden bg-cream selection:bg-terracotta selection:text-white">
             {/* Background Texture & Blobs */}
             <div className="absolute inset-0 noise-texture pointer-events-none opacity-[0.03]" />
-            <div className="absolute top-[-5%] right-[-5%] w-[450px] h-[450px] bg-terracotta animate-blob opacity-[0.05] blur-[120px] rounded-full" />
-            <div className="absolute bottom-[10%] left-[-5%] w-[350px] h-[350px] bg-terra-muted animate-blob opacity-[0.12] blur-[100px] rounded-full" />
+            <div className="absolute top-[-5%] right-[-5%] w-[450px] h-[450px] bg-terracotta opacity-[0.02] blur-[150px] rounded-full" />
+            <div className="absolute bottom-[10%] left-[-5%] w-[350px] h-[350px] bg-terra-muted opacity-[0.05] blur-[120px] rounded-full" />
 
             <div className="container-custom grid lg:grid-cols-2 gap-12 lg:gap-20 items-center relative z-10">
                 
@@ -43,7 +43,7 @@ const Hero = () => {
                         variants={itemVariants}
                         className="inline-flex items-center gap-2.5 px-6 py-2 rounded-full bg-terra-muted/20 border border-terracotta/10 mb-8"
                     >
-                        <span className="w-2 h-2 rounded-full bg-terracotta animate-pulse" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-terracotta" />
                         <span className="text-[10px] font-bold tracking-[0.25em] uppercase text-terra-dark">
                             {personalData.availability}
                         </span>
@@ -110,7 +110,9 @@ const Hero = () => {
                             <img 
                                 src={featuredProject.image} 
                                 alt={featuredProject.title}
+                                loading="eager"
                                 className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                                style={{ willChange: 'transform' }}
                             />
                             <div className="absolute inset-0 bg-charcoal/5" />
                             

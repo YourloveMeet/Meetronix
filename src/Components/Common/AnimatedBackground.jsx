@@ -11,31 +11,31 @@ const AnimatedBackground = React.memo(() => {
             {/* Top Right Blob */}
             <motion.div
                 animate={{
-                    x: [0, 30, 0],
-                    y: [0, -30, 0],
-                    scale: [1, 1.05, 1],
+                    x: [0, 15, 0],
+                    y: [0, -15, 0],
                 }}
                 transition={{
-                    duration: 15,
+                    duration: 25,
                     repeat: Infinity,
-                    ease: "easeInOut"
+                    ease: "linear"
                 }}
-                className="absolute -top-[5%] -right-[5%] w-[40%] h-[40%] rounded-full bg-terracotta/[0.04] blur-[80px]"
+                className="absolute -top-[5%] -right-[5%] w-[40%] h-[40%] rounded-full bg-terracotta/[0.03] blur-[100px]"
+                style={{ willChange: 'transform' }}
             />
 
             {/* Bottom Left Blob */}
             <motion.div
                 animate={{
-                    x: [0, -20, 0],
-                    y: [0, 20, 0],
-                    scale: [1, 1.1, 1],
+                    x: [0, -10, 0],
+                    y: [0, 10, 0],
                 }}
                 transition={{
-                    duration: 18,
+                    duration: 30,
                     repeat: Infinity,
-                    ease: "easeInOut"
+                    ease: "linear"
                 }}
-                className="absolute -bottom-[5%] -left-[5%] w-[50%] h-[50%] rounded-full bg-terra-muted/[0.08] blur-[90px]"
+                className="absolute -bottom-[5%] -left-[5%] w-[50%] h-[50%] rounded-full bg-terra-muted/[0.05] blur-[120px]"
+                style={{ willChange: 'transform' }}
             />
         </div>
     );

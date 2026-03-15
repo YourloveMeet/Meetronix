@@ -55,7 +55,9 @@ const Blog = () => {
                                 <img 
                                     src={featuredPost.image || "/blog-placeholder.jpg"} 
                                     alt={featuredPost.title}
+                                    loading="lazy"
                                     className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105"
+                                    style={{ willChange: 'transform' }}
                                 />
                                 <div className="absolute inset-0 bg-charcoal/5 group-hover:bg-transparent transition-colors" />
                             </div>
@@ -118,7 +120,9 @@ const Blog = () => {
                                     <img 
                                         src={blog.image || "/blog-placeholder.jpg"} 
                                         alt={blog.title}
+                                        loading="lazy"
                                         className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
+                                        style={{ willChange: 'transform' }}
                                     />
                                     <div className="absolute top-4 left-4">
                                          <span className="px-4 py-1.5 glass-card bg-white/80 backdrop-blur-xl text-[9px] font-bold uppercase tracking-widest text-text-primary rounded-full border border-white/40">
