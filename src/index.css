@@ -139,3 +139,61 @@ html {
 .italic-font {
     font-style: normal !important;
 }
+
+/* Prose - Individual article content styling */
+.prose h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin: 2rem 0 0.75rem;
+}
+.prose p {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 1.25rem;
+}
+.prose strong {
+  font-weight: 500;
+  color: var(--text-primary);
+}
+.prose ul, .prose ol {
+  padding-left: 1.5rem;
+  margin-bottom: 1.25rem;
+  color: var(--text-secondary);
+}
+.prose li {
+  line-height: 1.8;
+  margin-bottom: 0.4rem;
+}
+.prose code {
+  font-family: monospace;
+  font-size: 13px;
+  background: var(--cream-dark);
+  color: var(--terracotta);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+.prose pre {
+  background: var(--charcoal);
+  color: #FAF7F2;
+  padding: 1.25rem;
+  border-radius: 12px;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  font-size: 13px;
+  line-height: 1.7;
+}
+.prose a {
+  color: var(--terracotta);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.prose hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2.5rem 0;
+}
