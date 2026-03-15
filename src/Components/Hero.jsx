@@ -1,176 +1,139 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Github, Linkedin, Twitter } from 'lucide-react';
-import MagneticButton from './Common/MagneticButton';
-import { fadeInUp, staggerContainer, scaleIn } from '../utils/animations';
+import { ArrowRight, Sparkles } from 'lucide-react';
+import { personalData } from '../data/personalData';
+import { projectsData } from '../data/projectsData';
 
 const Hero = () => {
-    const [text, setText] = useState('');
-    const fullText = 'Building Digital Experiences';
-    const [showCursor, setShowCursor] = useState(true);
+    const featuredProject = projectsData.find(p => p.id === 'fauna-rituals') || projectsData[0];
 
-    // Typewriter effect with cleanup
-    useEffect(() => {
-        let index = 0;
-        const timer = setInterval(() => {
-            if (index <= fullText.length) {
-                setText(fullText.slice(0, index));
-                index++;
-            } else {
-                clearInterval(timer);
-                setShowCursor(false); // Hide cursor after typing is done
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.1,
+                delayChildren: 0.2
             }
-        }, 80);
+        }
+    };
 
-        return () => clearInterval(timer);
-    }, []);
+    const itemVariants = {
+        hidden: { opacity: 0, y: 15 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } }
+    };
 
     return (
-        <div className="min-h-screen flex flex-col justify-center items-center text-center relative z-10 px-4 py-20">{/* Removed floating icon for better performance */}
+        <section className="relative min-h-[90vh] flex items-center pt-20 pb-12 overflow-hidden bg-cream selection:bg-terracotta selection:text-white">
+            {/* Background Texture & Blobs */}
+            <div className="absolute inset-0 noise-texture pointer-events-none opacity-[0.03]" />
+            <div className="absolute top-[-5%] right-[-5%] w-[450px] h-[450px] bg-terracotta animate-blob opacity-[0.05] blur-[120px] rounded-full" />
+            <div className="absolute bottom-[10%] left-[-5%] w-[350px] h-[350px] bg-terra-muted animate-blob opacity-[0.12] blur-[100px] rounded-full" />
 
-            <motion.div
-                variants={staggerContainer}
-                initial="hidden"
-                animate="visible"
-                className="max-w-5xl mx-auto relative z-10"
-            >
-                {/* Badge - Fixed positioning to avoid navbar overlap */}
-                <motion.span
-                    variants={scaleIn}
-                    className="inline-block px-6 py-3 rounded-full glass text-accent text-sm md:text-base font-medium mb-8 mt-6 border border-accent/30 shadow-lg shadow-accent/20"
-                >
-                    <span className="mr-2">✨</span>
-                    Full Stack Developer & Creative Technologist
-                </motion.span>
-
-                {/* Main Heading with optimized Typewriter Effect */}
-                <motion.div variants={fadeInUp} className="mb-6">
-                    <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-tight">
-                        <motion.span
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.3, duration: 0.5 }}
-                            className="block mb-6"
-                        >
-                            {text}
-                            {showCursor && <span className="text-accent">|</span>}
-                        </motion.span>
-                        <motion.span
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: 2, duration: 0.6, type: "spring", stiffness: 150 }}
-                            className="block bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent"
-                        >
-                            That Inspire
-                        </motion.span>
-                    </h1>
-                </motion.div>
-
-                {/* Description */}
-                <motion.p
-                    variants={fadeInUp}
-                    className="text-lg md:text-xl lg:text-2xl text-slate-300 mb-12 max-w-3xl mx-auto leading-relaxed"
-                >
-                    I craft{' '}
-                    <span className="text-accent font-semibold">high-performance websites</span>,{' '}
-                    <span className="text-purple-400 font-semibold">immersive games</span>, and{' '}
-                    <span className="text-pink-400 font-semibold">cross-platform mobile apps</span>.
-                </motion.p>
-
-                {/* CTA Buttons */}
+            <div className="container-custom grid lg:grid-cols-2 gap-12 lg:gap-20 items-center relative z-10">
+                
+                {/* Left Content */}
                 <motion.div
-                    variants={fadeInUp}
-                    className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16"
+                    initial="hidden"
+                    animate="visible"
+                    variants={containerVariants}
                 >
-                    <MagneticButton
-                        className="px-10 py-5 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-bold rounded-full hover:shadow-2xl hover:shadow-accent/50 transition-all"
-                    >
-                        <a href="#projects" className="flex items-center gap-3">
-                            View My Work
-                            <ArrowRight size={20} />
-                        </a>
-                    </MagneticButton>
-
-                    <MagneticButton
-                        className="px-10 py-5 glass text-white font-bold rounded-full hover:bg-white/10 transition-all border-2 border-white/20 backdrop-blur-xl"
-                    >
-                        <a href="#contact">Let's Connect</a>
-                    </MagneticButton>
-                </motion.div>
-
-                {/* Social Links - Simplified animations */}
-                <motion.div
-                    variants={fadeInUp}
-                    className="flex justify-center gap-6 mb-16"
-                >
-                    {[
-                        { Icon: Github, href: '#', label: 'GitHub' },
-                        { Icon: Linkedin, href: '#', label: 'LinkedIn' },
-                        { Icon: Twitter, href: '#', label: 'Twitter' }
-                    ].map(({ Icon, href, label }, index) => (
-                        <motion.a
-                            key={index}
-                            href={href}
-                            aria-label={label}
-                            whileHover={{ y: -5 }}
-                            whileTap={{ scale: 0.95 }}
-                            className="p-4 glass rounded-xl text-slate-400 hover:text-white transition-colors border border-white/10 hover:border-accent/50"
-                        >
-                            <Icon size={24} />
-                        </motion.a>
-                    ))}
-                </motion.div>
-
-                {/* Stats - Optimized */}
-                <motion.div
-                    variants={fadeInUp}
-                    className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-3xl mx-auto"
-                >
-                    {[
-                        { number: '50+', label: 'Projects Completed' },
-                        { number: '3+', label: 'Years Experience' },
-                        { number: '100%', label: 'Client Satisfaction' }
-                    ].map((stat, index) => (
-                        <motion.div
-                            key={index}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 2.5 + index * 0.1 }}
-                            whileHover={{ y: -5 }}
-                            className="glass p-6 rounded-2xl border border-white/10 hover:border-accent/30 transition-all"
-                        >
-                            <div className="text-3xl md:text-4xl font-bold gradient-text mb-2">
-                                {stat.number}
-                            </div>
-                            <div className="text-sm text-slate-400">{stat.label}</div>
-                        </motion.div>
-                    ))}
-                </motion.div>
-            </motion.div>
-
-            {/* Simplified Scroll Indicator */}
-            <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 0.6 }}
-                transition={{ delay: 3, duration: 1 }}
-                className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-            >
-                <motion.div
-                    animate={{ y: [0, 8, 0] }}
-                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                    className="w-6 h-10 border-2 border-accent/50 rounded-full flex justify-center p-2"
-                >
+                    {/* Availability Badge */}
                     <motion.div
-                        animate={{ opacity: [1, 0] }}
-                        transition={{ duration: 2, repeat: Infinity }}
-                        className="w-1.5 h-1.5 bg-accent rounded-full"
-                    />
+                        variants={itemVariants}
+                        className="inline-flex items-center gap-2.5 px-6 py-2 rounded-full bg-terra-muted/20 border border-terracotta/10 mb-8"
+                    >
+                        <span className="w-2 h-2 rounded-full bg-terracotta animate-pulse" />
+                        <span className="text-[10px] font-bold tracking-[0.25em] uppercase text-terra-dark">
+                            {personalData.availability}
+                        </span>
+                    </motion.div>
+
+                    {/* Headline */}
+                    <motion.h1
+                        variants={itemVariants}
+                        className="text-[52px] md:text-[80px] lg:text-[92px] font-display leading-[1] text-text-primary mb-6 tracking-tight"
+                    >
+                        Building premium digital <span className="text-terracotta font-normal">experiences.</span>
+                    </motion.h1>
+
+                    {/* Subtext */}
+                    <motion.p
+                        variants={itemVariants}
+                        className="text-[18px] md:text-[20px] font-sans font-light text-text-secondary mb-10 max-w-[540px] leading-relaxed"
+                    >
+                        {personalData.subtagline}
+                    </motion.p>
+
+                    {/* CTA Row */}
+                    <motion.div
+                        variants={itemVariants}
+                        className="flex flex-wrap gap-4"
+                    >
+                        <button className="btn-primary flex items-center gap-3">
+                            Explore Works <ArrowRight size={18} />
+                        </button>
+                        <button className="btn-secondary">
+                            Get In Touch
+                        </button>
+                    </motion.div>
+
+                    {/* Meta Stats Row */}
+                    <motion.div 
+                        variants={itemVariants}
+                        className="mt-16 pt-8 border-t border-border/20 flex gap-10"
+                    >
+                        <div className="flex flex-col">
+                            <span className="text-2xl font-display text-text-primary tracking-tight">37+</span>
+                            <span className="text-[9px] font-bold uppercase tracking-widest text-text-muted">Projects</span>
+                        </div>
+                        <div className="flex flex-col">
+                            <span className="text-2xl font-display text-text-primary tracking-tight">4.7yr</span>
+                            <span className="text-[9px] font-bold uppercase tracking-widest text-text-muted">Industry Hub</span>
+                        </div>
+                        <div className="flex flex-col">
+                            <span className="text-2xl font-display text-text-primary tracking-tight">5★</span>
+                            <span className="text-[9px] font-bold uppercase tracking-widest text-text-muted">Satisfaction</span>
+                        </div>
+                    </motion.div>
                 </motion.div>
-            </motion.div>
-        </div>
+
+                {/* Right Floating Card */}
+                <motion.div
+                    initial={{ opacity: 0, x: 40, scale: 0.95 }}
+                    animate={{ opacity: 1, x: 0, scale: 1 }}
+                    transition={{ delay: 0.6, duration: 1, ease: [0.22, 1, 0.36, 1] }}
+                    className="relative hidden lg:block"
+                >
+                    <div className="relative z-10 p-6 glass-card bg-warm-white/40 transition-all duration-700 group shadow-xl">
+                        <div className="aspect-[16/10] rounded-2xl overflow-hidden relative border border-border/20">
+                            <img 
+                                src={featuredProject.image} 
+                                alt={featuredProject.title}
+                                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                            />
+                            <div className="absolute inset-0 bg-charcoal/5" />
+                            
+                            <div className="absolute inset-x-4 bottom-4 p-5 glass-card bg-white/95 backdrop-blur-2xl border-white/40 rounded-xl">
+                                <div className="flex items-center gap-2 mb-2">
+                                    <Sparkles size={12} className="text-terracotta" />
+                                    <span className="text-[9px] uppercase tracking-[0.2em] text-terracotta font-bold">Latest Case Study</span>
+                                </div>
+                                <div className="flex items-center justify-between">
+                                    <h3 className="text-xl font-display text-text-primary">{featuredProject.title}</h3>
+                                    <ArrowRight size={16} className="text-terracotta opacity-40 group-hover:opacity-100 transition-opacity" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    {/* Decorative Blobs */}
+                    <div className="absolute -top-10 -right-10 w-32 h-32 bg-terracotta/5 rounded-full blur-3xl" />
+                    <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-terra-muted/10 rounded-full blur-3xl" />
+                </motion.div>
+            </div>
+        </section>
     );
 };
 
 export default Hero;
-
-

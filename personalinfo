@@ -1,0 +1,568 @@
+# Meetronix — Complete Site Data & Content
+
+> This file is the single source of truth for all content, copy, and data used across the Meetronix portfolio website. Use this to populate all pages, components, and data files.
+
+---
+
+## 👤 Personal Information
+
+```js
+const personal = {
+  name: "Meet Patel",
+  title: "Full Stack Engineer & Designer",
+  tagline: "Building premium digital experiences.",
+  subtagline: "Full-stack engineer & designer crafting luxury web products for global brands.",
+  location: "Ahmedabad, Gujarat, India",
+  locationShort: "Gujarat, India",
+  availability: "Available for Projects",
+  email: "meetronix010@gmail.com",
+  phone: "+91 8780971548",
+  age: 19,
+  experience: "3+ Years",
+  portfolio: "https://meetronix.vercel.app",
+  github: "https://github.com/YourloveMeet",
+  linkedin: "www.linkedin.com/in/meet-patel-309939337", // update if different
+}
+```
+
+---
+
+## 🧠 About / Bio
+
+### Short Bio (Hero / Meta)
+> Full-stack engineer & designer crafting luxury web products for global brands.
+
+### Medium Bio (About Page intro)
+> I'm Meet — a 19-year-old full-stack engineer and product designer based in Ahmedabad, India. I started building software at 16, joined AS Technolabs as a Unity developer, and grew into full-stack web development by teaching myself React, Next.js, and cloud infrastructure on the side.
+>
+> I design in Figma first, build with modern stacks, and use agentic tools like Cursor to ship fast without sacrificing quality. My work spans luxury ecommerce, SaaS platforms, and interactive web applications — always built for international markets.
+
+### Long Bio (Full About Page)
+> I'm Meet — a 19-year-old full-stack engineer and designer based in Ahmedabad, India. I write this not to impress, but to be honest about where I'm coming from and where I'm going.
+>
+> I grew up in a single-mother household. My father left when I was one. That background didn't slow me down — it built the self-discipline I rely on every single day. At 16, while most of my peers were still figuring things out, I landed my first professional role as a Unity developer at AS Technolabs. I've been there nearly three years now, and my role has grown from building game mechanics to architecting full-stack web products.
+>
+> Today I work across the entire stack — React, Next.js, Node.js, MongoDB, AWS EC2, TypeScript — and I design everything in Figma before a single line of code gets written. I use agentic coding tools like Cursor to move fast, but I never ship something I don't fully understand.
+>
+> My long-term goal is to build SaaS and AI products for international markets. Every project I take on right now is a step in that direction — building the portfolio, the process, and the reputation to get there.
+
+### One-liner (Footer / Cards)
+> Crafting digital experiences that inspire and convert.
+
+---
+
+## 📊 Stats / Achievements
+
+```js
+const stats = [
+  { number: "15+", label: "Projects Delivered" },
+  { number: "3yr", label: "Industry Experience" },
+  { number: "5★",  label: "Client Rating" },
+  { number: "2",   label: "Countries Served" },
+]
+```
+
+---
+
+## 💼 Work Experience
+
+```js
+const experience = [
+  {
+    company: "AS Technolabs",
+    role: "Full Stack Engineer",
+    type: "Part-time",
+    duration: "2022 – Present",
+    durationShort: "~3 Years",
+    location: "Ahmedabad, Gujarat",
+    description: "Started as a Unity Developer at 16 and grew into full-stack web development. Built client-facing web applications, SaaS platforms, and interactive tools. Work spans frontend architecture, backend APIs, cloud deployment on AWS EC2, and database design.",
+    highlights: [
+      "Started as Unity Developer at age 16",
+      "Grew into Full Stack Engineer role organically",
+      "Built and deployed production SaaS (GearGuard) on AWS EC2",
+      "Lead frontend and architecture decisions on client projects",
+    ],
+    tech: ["React", "Next.js", "Node.js", "MongoDB", "AWS EC2", "Unity", "TypeScript"],
+  }
+]
+```
+
+---
+
+## 🎓 Education
+
+```js
+const education = [
+  {
+    degree: "B.Tech in Information & Communication Technology (ICT)",
+    institution: "Gujarat Technological University (GTU)",
+    duration: "2023 – 2028",
+    status: "Currently Enrolled — 2nd Year",
+    location: "Gujarat, India",
+  },
+  {
+    degree: "Diploma in Information Technology",
+    institution: "Gujarat Technological University (GTU)",
+    duration: "2020 – 2023",
+    status: "Completed",
+    location: "Gujarat, India",
+  }
+]
+```
+
+---
+
+## 🛠️ Skills & Technologies
+
+### Primary Stack
+```js
+const skillCategories = [
+  {
+    category: "Web Development",
+    icon: "Globe",
+    skills: [
+      { name: "React & Next.js",   },
+      { name: "TypeScript",        },
+      { name: "Tailwind CSS",      },
+      { name: "Node.js",           },
+    ]
+  },
+  {
+    category: "Game Development",
+    icon: "Gamepad2",
+    skills: [
+      { name: "Unity",             },
+      { name: "C#",                },
+      { name: "Blender",           },
+      { name: "Shader Graph",      },
+    ]
+  },
+  {
+    category: "App Development",
+    icon: "Smartphone",
+    skills: [
+      { name: "React Native",       },
+      { name: "Firebase",          },
+      { name: "Redux",              },
+      { name: "Native Modules",    },
+    ]
+  },
+  {
+    category: "Backend & Database",
+    icon: "Database",
+    skills: [
+      { name: "Node.js & Express", },
+      { name: "MongoDB",            },
+      { name: "PostgreSQL",         },
+      { name: "GraphQL",           },
+    ]
+  }
+]
+```
+
+### Complementary Tools
+```js
+const tools = [
+  "Docker", "AWS EC2", "Git", "Figma",
+  "Photoshop", "VS Code", "Postman", "Jest", "Cursor"
+]
+```
+
+### Design Skills
+```js
+const designSkills = [
+  "Figma (UI/UX Design)",
+  "Design Systems",
+  "Glassmorphism & Motion UI",
+  "Responsive Design",
+  "Luxury & Brand-Driven Design",
+]
+```
+
+---
+
+## 🚀 Projects
+
+```js
+const projects = [
+  {
+    id: "fauna-rituals",
+    title: "Fauna Rituals",
+    subtitle: "Luxury skincare for high-end rituals.",
+    category: ["Web", "Live"],
+    badge: "Live",
+    featured: true,
+    image: "/assets/projects/fauna-rituals.jpg", // replace with actual screenshot
+    gradientFallback: "linear-gradient(135deg, #F0D5C8, #E8C4A8, #D4A882)",
+    tags: ["React", "Custom Tool", "Framer Motion"],
+    tech: ["React", "Next.js", "Tailwind CSS", "Framer Motion", "Figma"],
+    url: "", // add live URL
+    github: "",
+    description: "A luxury ecommerce platform for architectural rituals and high-end lifestyle. Agency-level design with custom animations and a premium product browsing experience.",
+    challenge: "Create a brand-forward ecommerce experience that felt as premium as the product itself — not a generic Shopify template.",
+    solution: "Designed entirely in Figma with a refined warm palette, custom scroll animations using Framer Motion, and a bespoke product card system built from scratch in React.",
+    results: "Achieved agency-level visual quality with a fully custom component system. Widely regarded as the strongest design work in the portfolio.",
+    designQuality: "Agency-Level",
+  },
+  {
+    id: "gearguard",
+    title: "GearGuard AI",
+    subtitle: "Intelligent analytics for hardware protection and maintenance prediction.",
+    category: ["Web", "SaaS"],
+    badge: "SaaS",
+    featured: true,
+    image: "/assets/projects/gearguard.jpg",
+    gradientFallback: "linear-gradient(135deg, #C8D8E8, #A8C4D4, #88A8C0)",
+    tags: ["React", "AI", "Tailwind"],
+    tech: ["React", "Node.js", "Express", "MongoDB", "AWS EC2", "TypeScript"],
+    url: "https://production-saas.vercel.app",
+    github: "",
+    description: "A production SaaS platform with an AWS EC2 Node.js backend. Features intelligent hardware analytics, maintenance prediction, and real-time monitoring dashboards.",
+    challenge: "Build a full production SaaS with persistent backend infrastructure — not just a frontend demo.",
+    solution: "Deployed a Node.js/Express API on AWS EC2, connected to MongoDB Atlas, with a React frontend consuming the live API. Implemented JWT auth, role-based access, and a real-time dashboard.",
+    results: "Live production SaaS with real infrastructure — demonstrates full-stack depth beyond typical portfolio projects.",
+    designQuality: "Production",
+  },
+  {
+    id: "celestial-arcade",
+    title: "Celestial Arcade",
+    subtitle: "Immersive space odyssey featuring classic mechanics and modern UI.",
+    category: ["Game", "Demo"],
+    badge: "Game",
+    featured: true,
+    image: "/assets/projects/celestial-arcade.jpg",
+    gradientFallback: "linear-gradient(135deg, #D8C8E8, #C4A8D4, #A888C0)",
+    tags: ["Unity", "C#", "3D/Graph"],
+    tech: ["Unity", "C#", "Shader Graph", "Blender"],
+    url: "",
+    github: "",
+    description: "An immersive space arcade game built in Unity featuring classic mechanics reimagined with modern shader effects and UI.",
+    challenge: "Combine nostalgia-driven mechanics with a visually modern execution using shader-based effects.",
+    solution: "Built in Unity with custom Shader Graph materials for space atmosphere, procedural level generation, and a clean HUD system.",
+    results: "Demonstrates Unity proficiency and creative technical problem-solving — differentiates the portfolio beyond web-only.",
+    designQuality: "Creative",
+  },
+  {
+    id: "aliska-stones",
+    title: "Aliska Stones",
+    subtitle: "Artisan jewelry ecommerce for discerning buyers.",
+    category: ["Web", "Live"],
+    badge: "Live",
+    featured: false,
+    image: "/assets/projects/aliska-stones.jpg",
+    gradientFallback: "linear-gradient(135deg, #E8E0D0, #D8CCBA, #C8B898)",
+    tags: ["Next.js", "Ecommerce", "Figma"],
+    tech: ["Next.js", "Tailwind CSS", "Figma"],
+    url: "",
+    github: "",
+    description: "A clean, minimal ecommerce site for an artisan jewelry brand. Focused on product presentation, warm visual language, and conversion-optimized layout.",
+    challenge: "Present delicate handmade jewelry in a way that communicates craftsmanship and premium quality online.",
+    solution: "Designed a clean, light-first layout in Figma with generous white space, large product imagery, and a warm neutral palette.",
+    results: "Live client project — demonstrates ability to deliver complete ecommerce solutions independently.",
+    designQuality: "Client Work",
+  },
+  {
+    id: "luxestays",
+    title: "LuxeStays",
+    subtitle: "Premium hotel booking platform for high-end properties.",
+    category: ["Web", "Demo"],
+    badge: "Demo",
+    featured: false,
+    image: "/assets/projects/luxestays.jpg",
+    gradientFallback: "linear-gradient(135deg, #C8D8C8, #A8C4A8, #88A888)",
+    tags: ["Next.js", "Node.js", "MongoDB"],
+    tech: ["Next.js", "Node.js", "MongoDB", "Tailwind CSS"],
+    url: "",
+    github: "",
+    description: "A luxury hotel booking demo built for a prospective ₹3L client project. Features property listings, booking flow, and a clean admin dashboard. Built with a backend development partner.",
+    challenge: "Demonstrate the capability to deliver a full-featured booking platform — frontend and backend — to win a major client project.",
+    solution: "Collaborated with a backend developer to build a complete booking system with Next.js frontend, Node/MongoDB backend, and a polished UI.",
+    results: "Built as a proof-of-concept for a significant client project currently in progress.",
+    designQuality: "Client Demo",
+  },
+  {
+    id: "meetronix",
+    title: "Meetronix",
+    subtitle: "Personal portfolio — the site you're currently on.",
+    category: ["Web", "Live"],
+    badge: "Live",
+    featured: false,
+    image: "/assets/projects/meetronix.jpg",
+    gradientFallback: "linear-gradient(135deg, #F0D5C8, #E8C4A8, #D4A882)",
+    tags: ["React", "Framer Motion", "Tailwind"],
+    tech: ["React 19", "Vite", "Tailwind CSS v3", "Framer Motion v12"],
+    url: "https://meetronix.vercel.app",
+    github: "",
+    description: "This portfolio site — designed and built from scratch. Showcases work, skills, and availability for international freelance projects.",
+    challenge: "Build a portfolio that competes with agency-quality work while being honest and personal.",
+    solution: "Designed with a warm cream & terracotta system, Playfair Display typography, and refined glassmorphism. Built in React 19 with Framer Motion for all animations.",
+    results: "The site you're on. Continuously iterated.",
+    designQuality: "Personal",
+  }
+]
+```
+
+---
+
+## 🛎️ Services
+
+```js
+const services = [
+  {
+    id: "luxury-ecommerce",
+    category: "Web Development",
+    title: "Luxury Ecommerce",
+    description: "Custom ecommerce experiences built for premium brands. Not templates — bespoke storefronts designed to convert international buyers and communicate brand prestige.",
+    features: [
+      "Custom product browsing & filtering",
+      "Brand-forward visual design",
+      "Mobile-first, conversion-optimised",
+      "Integration with Stripe, Shopify API, or custom backend",
+    ],
+    startingFrom: "$800",
+    badge: "Most Requested",
+    icon: "ShoppingBag",
+  },
+  {
+    id: "saas-development",
+    category: "SaaS Development",
+    title: "SaaS Web Applications",
+    description: "Full-stack SaaS products with real infrastructure. From dashboard design to API architecture — built to scale, with AWS deployment included.",
+    features: [
+      "React / Next.js frontend",
+      "Node.js + Express backend",
+      "MongoDB or PostgreSQL",
+      "AWS EC2 deployment",
+      "JWT auth & role-based access",
+    ],
+    startingFrom: "$1,500",
+    badge: null,
+    icon: "LayoutDashboard",
+  },
+  {
+    id: "web-design-dev",
+    category: "Web Design & Development",
+    title: "Premium Web Design",
+    description: "High-fidelity Figma designs brought to life in code. For agencies, founders, and brands that want something genuinely exceptional — not AI-generated templates.",
+    features: [
+      "Figma design system first",
+      "Framer Motion animations",
+      "Responsive across all devices",
+      "Performance optimised",
+    ],
+    startingFrom: "$600",
+    badge: null,
+    icon: "Palette",
+  },
+  {
+    id: "game-development",
+    category: "Game Development",
+    title: "Unity Game Development",
+    description: "Interactive experiences, casual games, and gamified web applications built in Unity. From concept to published build.",
+    features: [
+      "Unity (C#) development",
+      "Shader Graph visual effects",
+      "WebGL builds for browser",
+      "Mobile (iOS/Android) publishing",
+    ],
+    startingFrom: "$500",
+    badge: null,
+    icon: "Gamepad2",
+  }
+]
+```
+
+### Process Timeline
+```js
+const process = [
+  { step: 1, title: "Discovery",    description: "Understanding your goals, audience, and technical requirements." },
+  { step: 2, title: "Design",       description: "High-fidelity Figma mockups and design system — no code until design is approved." },
+  { step: 3, title: "Development",  description: "Clean, documented code. Weekly progress updates. You see it being built." },
+  { step: 4, title: "Testing",      description: "Cross-browser, mobile, and performance testing before handoff." },
+  { step: 5, title: "Launch",       description: "Deployment, domain setup, and a 2-week post-launch support window." },
+]
+```
+
+---
+
+## 📅 Journey / Timeline
+
+```js
+const timeline = [
+  {
+    year: "2020",
+    title: "Started the Diploma",
+    description: "Enrolled in Diploma in IT at GTU. First real exposure to programming — fell in love with building things.",
+  },
+  {
+    year: "2021",
+    title: "First Unity Project",
+    description: "Built my first Unity game independently. Realised I could turn ideas into interactive experiences.",
+  },
+  {
+    year: "2022",
+    title: "Joined AS Technolabs",
+    description: "Landed my first professional role at 16 as a Unity Developer. Youngest on the team. Started getting paid to build.",
+  },
+  {
+    year: "2023",
+    title: "Shifted to Full Stack Web",
+    description: "Self-taught React and Next.js alongside the job. Started taking on web projects. Completed Diploma.",
+  },
+  {
+    year: "2024",
+    title: "Launched GearGuard & Fauna Rituals",
+    description: "Built two of my strongest projects — a live production SaaS on AWS and an agency-level luxury ecommerce site. Started pursuing international freelance clients.",
+  },
+  {
+    year: "2025",
+    title: "Pursuing International Market",
+    description: "Currently targeting US, UK, AU, and CA clients for luxury ecommerce and SaaS projects. Enrolled in BTech ICT at GTU.",
+  },
+]
+```
+
+---
+
+## ✍️ Blog Posts
+
+```js
+const blogPosts = [
+  {
+    id: "why-i-design-before-code",
+    title: "Why I Always Design Before Writing Code",
+    excerpt: "Every project I've built that went wrong started with code. Every project that landed well started with Figma. Here's why design-first isn't just a workflow — it's a mindset.",
+    category: "Design",
+    tags: ["Figma", "Process", "Design Systems"],
+    readTime: "4 min read",
+    date: "2025-01-15",
+    featured: true,
+  },
+  {
+    id: "building-gearguard",
+    title: "How I Built a Production SaaS at 18 Without a Team",
+    excerpt: "GearGuard runs on AWS EC2, uses JWT auth, and has real users. I built it while studying for my BTech. Here's what I learned about shipping real infrastructure solo.",
+    category: "Engineering",
+    tags: ["AWS", "Node.js", "SaaS", "MongoDB"],
+    readTime: "7 min read",
+    date: "2025-02-10",
+    featured: true,
+  },
+  {
+    id: "luxury-web-design",
+    title: "What Makes a Web Design Feel Luxury?",
+    excerpt: "It's not gold colors and serif fonts. Luxury on the web is about restraint, space, and typography that earns attention. Notes from designing Fauna Rituals.",
+    category: "Design",
+    tags: ["Luxury Design", "Ecommerce", "Typography"],
+    readTime: "5 min read",
+    date: "2025-03-01",
+    featured: false,
+  },
+  {
+    id: "agentic-coding-workflow",
+    title: "My Agentic Coding Workflow with Cursor",
+    excerpt: "I use Cursor to ship faster — but not blindly. Here's how I prompt, review, and maintain full understanding of AI-generated code in production projects.",
+    category: "Engineering",
+    tags: ["Cursor", "AI Tools", "Workflow"],
+    readTime: "6 min read",
+    date: "2025-03-12",
+    featured: false,
+  },
+]
+```
+
+---
+
+## 📬 Contact & CTA
+
+```js
+const contact = {
+  email: "meetronix010@gmail.com",
+  phone: "+91 8780971348",
+  location: "Ahmedabad, Gujarat, India",
+  locationNote: "Remote Worldwide",
+  availability: "Currently available for high-end web products and architectural engineering for global agencies.",
+  ctaCard: {
+    title: "International Freelance",
+    body: "Currently available for high-end web products and architectural engineering for global agencies.",
+    cta: "Book a Strategy Call →",
+    ctaLink: "mailto:meetronix010@gmail.com?subject=Strategy Call Request",
+  },
+  formFields: ["Your Name", "Email Address", "Subject", "Message"],
+  submitLabel: "Send Message",
+}
+```
+
+---
+
+## 🔗 Navigation
+
+```js
+const navLinks = [
+  { label: "Work",     path: "/portfolio" },
+  { label: "About",    path: "/about" },
+  { label: "Services", path: "/services" },
+  { label: "Blog",     path: "/blog" },
+]
+
+const navCTA = { label: "Hire Me →", path: "/contact" }
+```
+
+---
+
+## 🦶 Footer
+
+```js
+const footer = {
+  logo: "Meetronix",
+  tagline: "Crafting digital experiences that inspire and convert.",
+  quickLinks: ["About", "Portfolio", "Services", "Blog"],
+  connect: {
+    email: "meetronix010@gmail.com",
+    location: "Gujarat, India — Remote Worldwide",
+  },
+  copyright: "© 2025 Meetronix. All rights reserved. Built with ♥ and React.",
+}
+```
+
+---
+
+## 🎯 Target Client Profile (use for copy tone & SEO)
+
+```
+Target clients:
+- Small to mid luxury brands in US, UK, AU, CA
+- Ecommerce brands in: skincare, jewelry, fashion accessories, candles, wellness
+- Early-stage SaaS founders who need a technical co-builder
+- Digital agencies looking for reliable subcontractors
+
+Pain points they have:
+- Tired of generic Shopify/Wix templates that don't match brand prestige
+- Agencies that overpromise and under-deliver
+- Developers who can't design, or designers who can't code
+- Slow turnaround and poor communication
+
+What Meet offers that's different:
+- Designs in Figma first — you see it before a line of code is written
+- Full-stack — one person from design to deployment
+- International communication — clear English, async-friendly, timezone-flexible
+- Proven production work — not just mockups
+```
+
+---
+
+## 🗂️ Data File Map
+
+| File | Purpose |
+|------|---------|
+| `src/data/personalData.js` | Personal info, stats, bio |
+| `src/data/projectsData.js` | All projects array |
+| `src/data/skillsData.js` | Skills categories + tools |
+| `src/data/servicesData.js` | Services + process timeline |
+| `src/data/blogData.js` | Blog posts array |
+| `src/data/timelineData.js` | Career journey timeline |
+| `src/data/navigationData.js` | Nav links + footer |
+
+---
+
+*Last updated: 2025 — Meetronix v2 redesign*

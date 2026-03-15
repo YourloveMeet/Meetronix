@@ -1,167 +1,56 @@
-// Services and capabilities data
+import { ShoppingBag, LayoutDashboard, Palette, Gamepad2, Layers, Cpu, Zap, ShieldCheck, Globe, Rocket } from 'lucide-react';
+
 export const servicesData = [
     {
-        id: 1,
-        title: 'Web Development',
-        icon: '🌐',
-        description: 'Full-stack web applications with modern frameworks and best practices.',
+        id: "luxury-ecommerce",
+        category: "Web Development",
+        iconName: "ShoppingBag",
+        title: "Luxury Ecommerce",
+        description: "Custom ecommerce experiences built for premium brands. Not templates — bespoke storefronts designed to convert international buyers.",
         features: [
-            'Responsive design across all devices',
-            'Performance optimization',
-            'SEO-friendly architecture',
-            'Progressive Web Apps (PWA)',
-            'API development & integration',
-            'Database design & optimization'
+            "Custom product browsing",
+            "Brand-forward visual design",
+            "Mobile-first architecture",
+            "Global payment integration",
         ],
-        technologies: ['React', 'Next.js', 'Node.js', 'TypeScript', 'MongoDB', 'PostgreSQL'],
-        color: 'from-blue-500 to-cyan-500'
+        startingFrom: "$800",
+        icon: ShoppingBag,
     },
     {
-        id: 2,
-        title: 'Game Development',
-        icon: '🎮',
-        description: 'Engaging games for PC, mobile, and web platforms using Unity.',
+        id: "saas-development",
+        category: "SaaS Development",
+        iconName: "Layout",
+        title: "SaaS Web Applications",
+        description: "Full-stack SaaS products with real infrastructure. From dashboard design to API architecture — built to scale.",
         features: [
-            '2D and 3D game development',
-            'Physics & animation systems',
-            'Multiplayer networking',
-            'In-app purchases & monetization',
-            'Cross-platform deployment',
-            'Performance optimization'
+            "Next.js frontend architecture",
+            "Node.js + Express backend",
+            "Scalable Database design",
+            "AWS EC2 deployment",
         ],
-        technologies: ['Unity', 'C#', 'Photon', 'PlayFab', 'Blender', 'Shader Graph'],
-        color: 'from-purple-500 to-pink-500'
+        startingFrom: "$1,500",
+        icon: LayoutDashboard,
     },
     {
-        id: 3,
-        title: 'Mobile App Development',
-        icon: '📱',
-        description: 'Native-quality mobile apps for iOS and Android using React Native.',
+        id: "web-design-dev",
+        category: "Editorial Design",
+        iconName: "Palette",
+        title: "Premium Web Design",
+        description: "High-fidelity Figma designs brought to life in code. For agencies and founders that want something genuinely exceptional.",
         features: [
-            'Cross-platform development',
-            'Native module integration',
-            'Push notifications',
-            'Offline-first architecture',
-            'App Store deployment',
-            'Analytics & crash reporting'
+            "Figma design system",
+            "Framer Motion animations",
+            "Responsive across all devices",
+            "Performance optimized",
         ],
-        technologies: ['React Native', 'Firebase', 'Redux', 'Native Modules', 'React Navigation'],
-        color: 'from-green-500 to-emerald-500'
-    },
-    {
-        id: 4,
-        title: 'UI/UX Design',
-        icon: '🎨',
-        description: 'Beautiful, intuitive interfaces that enhance user experience.',
-        features: [
-            'User research & personas',
-            'Wireframing & prototyping',
-            'Visual design systems',
-            'Interaction design',
-            'Usability testing',
-            'Accessibility compliance'
-        ],
-        technologies: ['Figma', 'Adobe XD', 'Sketch', 'Framer', 'Principle'],
-        color: 'from-orange-500 to-red-500'
-    },
-    {
-        id: 5,
-        title: 'API Development',
-        icon: '⚡',
-        description: 'Robust and scalable APIs for your applications.',
-        features: [
-            'RESTful API design',
-            'GraphQL implementation',
-            'Authentication & authorization',
-            'Rate limiting & caching',
-            'API documentation',
-            'Microservices architecture'
-        ],
-        technologies: ['Node.js', 'Express', 'GraphQL', 'JWT', 'Redis', 'Docker'],
-        color: 'from-yellow-500 to-orange-500'
-    },
-    {
-        id: 6,
-        title: 'DevOps & Deployment',
-        icon: '🚀',
-        description: 'Seamless deployment and continuous integration pipelines.',
-        features: [
-            'CI/CD pipeline setup',
-            'Cloud infrastructure (AWS, GCP)',
-            'Container orchestration',
-            'Monitoring & logging',
-            'Automated testing',
-            'Performance optimization'
-        ],
-        technologies: ['Docker', 'Kubernetes', 'AWS', 'GitHub Actions', 'Terraform'],
-        color: 'from-indigo-500 to-purple-500'
+        startingFrom: "$600",
+        icon: Palette,
     }
 ];
 
-// Process stages
 export const processStages = [
-    {
-        number: '01',
-        title: 'Discovery',
-        description: 'Understanding your goals, target audience, and project requirements through detailed consultation.',
-        icon: '🔍'
-    },
-    {
-        number: '02',
-        title: 'Planning',
-        description: 'Creating a comprehensive roadmap with timelines, milestones, and technical specifications.',
-        icon: '📋'
-    },
-    {
-        number: '03',
-        title: 'Design',
-        description: 'Crafting intuitive interfaces and user experiences with modern design principles.',
-        icon: '🎨'
-    },
-    {
-        number: '04',
-        title: 'Development',
-        description: 'Building your solution with clean code, best practices, and agile methodology.',
-        icon: '💻'
-    },
-    {
-        number: '05',
-        title: 'Testing',
-        description: 'Rigorous quality assurance to ensure reliability, performance, and security.',
-        icon: '✅'
-    },
-    {
-        number: '06',
-        title: 'Delivery',
-        description: 'Smooth deployment, documentation, and ongoing support for your success.',
-        icon: '🚀'
-    }
-];
-
-// Testimonials (optional)
-export const testimonials = [
-    {
-        id: 1,
-        name: 'Sarah Johnson',
-        role: 'CEO, TechStart',
-        content: 'Outstanding work! The website exceeded our expectations and was delivered ahead of schedule.',
-        rating: 5,
-        avatar: '/testimonials/sarah.jpg'
-    },
-    {
-        id: 2,
-        name: 'Michael Chen',
-        role: 'Product Manager, GameCo',
-        content: 'Incredible game development skills. The final product was polished and performant.',
-        rating: 5,
-        avatar: '/testimonials/michael.jpg'
-    },
-    {
-        id: 3,
-        name: 'Emily Rodriguez',
-        role: 'Founder, FitLife',
-        content: 'The mobile app development was seamless. Highly professional and responsive throughout.',
-        rating: 5,
-        avatar: '/testimonials/emily.jpg'
-    }
+    { step: 1, title: "Discovery",    description: "Understanding your goals and technical requirements." },
+    { step: 2, title: "Design",       description: "High-fidelity Figma mockups and design system." },
+    { step: 3, title: "Development",  description: "Clean, documented code with weekly updates." },
+    { step: 4, title: "Handoff",      description: "Testing, deployment, and post-launch support." },
 ];

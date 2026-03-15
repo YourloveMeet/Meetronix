@@ -1,150 +1,90 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Github, Play } from 'lucide-react';
-
-const projectsData = [
-    {
-        id: 1,
-        title: "Neon Cyber City",
-        category: "Game",
-        image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        description: "A cyberpunk-themed open world RPG built with Unity and C#.",
-        tags: ["Unity", "C#", "3D Modeling"],
-        links: { demo: "#", code: "#" }
-    },
-    {
-        id: 2,
-        title: "E-Commerce Dashboard",
-        category: "Web",
-        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        description: "A comprehensive analytics dashboard for online retailers.",
-        tags: ["React", "Tailwind", "Recharts"],
-        links: { demo: "#", code: "#" }
-    },
-    {
-        id: 3,
-        title: "Fitness Tracker Pro",
-        category: "App",
-        image: "https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        description: "Cross-platform mobile app for tracking workouts and nutrition.",
-        tags: ["React Native", "Firebase", "Expo"],
-        links: { demo: "#", code: "#" }
-    },
-    {
-        id: 4,
-        title: "Portfolio V1",
-        category: "Web",
-        image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        description: "Previous version of my personal portfolio website.",
-        tags: ["HTML/CSS", "JavaScript"],
-        links: { demo: "#", code: "#" }
-    },
-    {
-        id: 5,
-        title: "Space Shooter",
-        category: "Game",
-        image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        description: "Classic arcade style space shooter with modern graphics.",
-        tags: ["Unity", "C#", "VFX Graph"],
-        links: { demo: "#", code: "#" }
-    },
-    {
-        id: 6,
-        title: "Social Connect",
-        category: "App",
-        image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        description: "Social networking app focused on professional connections.",
-        tags: ["React Native", "Node.js", "Socket.io"],
-        links: { demo: "#", code: "#" }
-    }
-];
+import React from 'react';
+import { motion } from 'framer-motion';
+import { ArrowRight, Sparkles } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { projectsData } from '../data/projectsData';
+import RevealOnScroll from './Common/RevealOnScroll';
 
 const Projects = () => {
-    const [filter, setFilter] = useState("All");
-
-    const filteredProjects = filter === "All"
-        ? projectsData
-        : projectsData.filter(project => project.category === filter);
+    // Show only the top 3 featured projects on Home
+    const featuredProjects = projectsData.slice(0, 3);
 
     return (
-        <div className="container mx-auto px-4">
-            <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="text-center mb-12"
-            >
-                <h2 className="text-3xl md:text-5xl font-bold mb-4">Featured <span className="text-accent">Projects</span></h2>
-                <p className="text-slate-400 max-w-2xl mx-auto mb-8">
-                    A selection of my best work across web, game, and mobile application development.
-                </p>
+        <section className="section-padding bg-cream overflow-hidden" id="projects">
+            <div className="container-custom">
+                <header className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-8">
+                    <RevealOnScroll>
+                        <div className="flex items-center gap-3 mb-4">
+                            <span className="text-[10px] uppercase tracking-[.4em] font-bold text-terracotta">Selected Works</span>
+                            <div className="w-12 h-[1px] bg-border" />
+                        </div>
+                        <h2 className="text-5xl md:text-7xl font-display text-text-primary leading-tight tracking-tight">
+                            Elite Showcase
+                        </h2>
+                    </RevealOnScroll>
+                    
+                    <RevealOnScroll>
+                        <Link to="/portfolio" className="group flex items-center gap-4 text-[11px] font-bold uppercase tracking-[0.4em] text-text-primary hover:text-terracotta transition-colors">
+                            View Full Archive <div className="w-10 h-[1px] bg-text-primary group-hover:bg-terracotta group-hover:w-14 transition-all" />
+                        </Link>
+                    </RevealOnScroll>
+                </header>
 
-                <div className="flex justify-center gap-4 flex-wrap">
-                    {["All", "Web", "Game", "App"].map((category) => (
-                        <button
-                            key={category}
-                            onClick={() => setFilter(category)}
-                            className={`px-6 py-2 rounded-full transition-all ${filter === category
-                                    ? "bg-accent text-dark font-bold shadow-[0_0_15px_rgba(56,189,248,0.4)]"
-                                    : "glass text-slate-300 hover:bg-white/10"
-                                }`}
-                        >
-                            {category}
-                        </button>
-                    ))}
-                </div>
-            </motion.div>
-
-            <motion.div
-                layout
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-            >
-                <AnimatePresence>
-                    {filteredProjects.map((project) => (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {featuredProjects.map((project, index) => (
                         <motion.div
-                            layout
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            exit={{ opacity: 0, scale: 0.9 }}
-                            transition={{ duration: 0.3 }}
                             key={project.id}
-                            className="glass-card rounded-xl overflow-hidden group"
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8, delay: index * 0.1 }}
+                            className="group cursor-pointer"
                         >
-                            <div className="relative h-48 overflow-hidden">
-                                <img
-                                    src={project.image}
+                            <div className="relative aspect-video bg-cream-dark overflow-hidden rounded-3xl mb-6 shadow-sm border border-border/20">
+                                <img 
+                                    src={project.image} 
                                     alt={project.title}
-                                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
                                 />
-                                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
-                                    <a href={project.links.demo} className="p-3 bg-accent text-dark rounded-full hover:scale-110 transition-transform">
-                                        <ExternalLink size={20} />
-                                    </a>
-                                    <a href={project.links.code} className="p-3 bg-white text-dark rounded-full hover:scale-110 transition-transform">
-                                        <Github size={20} />
-                                    </a>
+                                <div className="absolute inset-0 bg-charcoal/5 group-hover:bg-transparent transition-colors duration-700" />
+                                
+                                <div className="absolute bottom-6 left-6 right-6 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                                    <div className="glass-card p-4 bg-white/90 backdrop-blur-2xl border-white/20 rounded-2xl">
+                                        <div className="flex items-center justify-between">
+                                            <span className="text-[10px] font-bold uppercase tracking-widest text-text-primary">View Case Study</span>
+                                            <ArrowRight size={16} className="text-terracotta" />
+                                        </div>
+                                    </div>
                                 </div>
-                                <div className="absolute top-4 right-4 px-3 py-1 bg-black/50 backdrop-blur-md rounded-full text-xs font-bold text-white border border-white/10">
-                                    {project.category}
+
+                                <div className="absolute top-6 left-6">
+                                    <div className="px-4 py-1.5 glass-card bg-warm-white/60 backdrop-blur-xl text-[9px] font-bold tracking-[.3em] uppercase text-text-primary rounded-full border border-white/40">
+                                        {project.category}
+                                    </div>
                                 </div>
                             </div>
 
-                            <div className="p-6">
-                                <h3 className="text-xl font-bold mb-2 group-hover:text-accent transition-colors">{project.title}</h3>
-                                <p className="text-slate-400 text-sm mb-4 line-clamp-2">{project.description}</p>
-                                <div className="flex flex-wrap gap-2">
-                                    {project.tags.map((tag, i) => (
-                                        <span key={i} className="text-xs text-accent bg-accent/10 px-2 py-1 rounded-md">
-                                            #{tag}
+                            <div className="space-y-3 px-2">
+                                <div className="flex items-center gap-2">
+                                    <Sparkles size={14} className="text-terracotta opacity-40" />
+                                    <h3 className="text-2xl font-display text-text-primary tracking-tight">{project.title}</h3>
+                                </div>
+                                <p className="text-sm font-sans font-light text-text-secondary leading-relaxed line-clamp-2">
+                                    {project.subtitle || project.description}
+                                </p>
+                                <div className="flex flex-wrap gap-3 pt-2">
+                                    {project.technologies.slice(0, 3).map((tech, i) => (
+                                        <span key={i} className="text-[9px] uppercase tracking-widest text-text-muted font-bold px-3 py-1 bg-cream-dark rounded-full">
+                                            {tech}
                                         </span>
                                     ))}
                                 </div>
                             </div>
                         </motion.div>
                     ))}
-                </AnimatePresence>
-            </motion.div>
-        </div>
+                </div>
+            </div>
+        </section>
     );
 };
 

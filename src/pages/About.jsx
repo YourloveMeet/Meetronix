@@ -1,234 +1,185 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Code, Gamepad, Smartphone, Award, Coffee, Zap } from 'lucide-react';
+import { ArrowRight, ExternalLink, Sparkles } from 'lucide-react';
 import RevealOnScroll from '../Components/Common/RevealOnScroll';
-import CountUpAnimation from '../Components/Common/CountUpAnimation';
-import { fadeInUp, staggerContainer, scaleIn } from '../utils/animations';
+import { personalData, statsData, bioData } from '../data/personalData';
+import { skillCategories } from '../data/skillsData';
+import { timelineData, experienceData } from '../data/timelineData';
 
 const About = () => {
-    const skills = [
-        { name: 'React & Next.js', level: 95, icon: Code, color: 'from-blue-500 to-cyan-500' },
-        { name: 'Unity & C#', level: 90, icon: Gamepad, color: 'from-purple-500 to-pink-500' },
-        { name: 'React Native', level: 88, icon: Smartphone, color: 'from-green-500 to-emerald-500' },
-        { name: 'Node.js & APIs', level: 92, icon: Zap, color: 'from-yellow-500 to-orange-500' }
-    ];
+    const currentJob = experienceData[0];
 
-    const timeline = [
-        {
-            year: '2024',
-            title: 'Senior Full Stack Developer',
-            company: 'Tech Innovations Inc.',
-            description: 'Leading development of enterprise web applications and mentoring junior developers.',
-            icon: '💼'
-        },
-        {
-            year: '2022',
-            title: 'Game Developer',
-            company: 'GameStudio Pro',
-            description: 'Developed multiplayer games using Unity with 100K+ downloads.',
-            icon: '🎮'
-        },
-        {
-            year: '2021',
-            title: 'Mobile App Developer',
-            company: 'AppWorks',
-            description: 'Built cross-platform mobile applications with React Native CLI.',
-            icon: '📱'
-        },
-        {
-            year: '2020',
-            title: 'Started Freelancing',
-            company: 'Self-Employed',
-            description: 'Began journey as an independent developer, building websites and apps for clients.',
-            icon: '🚀'
-        }
-    ];
-
-    const achievements = [
-        { number: 50, suffix: '+', label: 'Projects Completed', icon: Award },
-        { number: 100, suffix: 'K+', label: 'Lines of Code', icon: Code },
-        { number: 30, suffix: '+', label: 'Happy Clients', icon: Coffee },
-        { number: 4.9, decimals: 1, label: 'Client Rating', icon: Zap }
+    // Flatten skills for the editorial display section
+    const flatSkills = [
+        "React", "Next.js", "Node.js", "TypeScript",
+        "AWS EC2", "MongoDB", "Figma", "Unity"
     ];
 
     return (
-        <div className="min-h-screen pt-24 pb-12">
+        <div className="min-h-screen pt-40 pb-20 bg-cream overflow-hidden selection:bg-terracotta selection:text-white">
             <div className="container-custom">
-                {/* Header */}
-                <motion.div
-                    variants={staggerContainer}
-                    initial="hidden"
-                    animate="visible"
-                    className="text-center mb-20"
-                >
-                    <motion.h1
-                        variants={fadeInUp}
-                        className="text-5xl md:text-7xl font-bold mb-6 gradient-text-animated"
-                    >
-                        About Me
-                    </motion.h1>
-                    <motion.p
-                        variants={fadeInUp}
-                        className="text-xl text-slate-400 max-w-3xl mx-auto"
-                    >
-                        Passionate developer crafting digital experiences that make a difference
-                    </motion.p>
-                </motion.div>
+                <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
 
-                {/* Introduction */}
-                <RevealOnScroll>
-                    <div className="grid md:grid-cols-2 gap-12 mb-32 items-center">
-                        <motion.div
-                            whileHover={{ scale: 1.02 }}
-                            className="relative"
-                        >
-                            <div className="glass-card p-8 rounded-3xl">
-                                <h2 className="text-3xl font-bold mb-6">Hello! I'm a Full Stack Developer</h2>
-                                <p className="text-slate-300 mb-4 leading-relaxed">
-                                    With over 3 years of experience in web development, game development, and mobile app creation,
-                                    I bring ideas to life through code. My journey started with a fascination for how things work,
-                                    which led me to pursue software development.
+                    {/* Left Column: Story */}
+                    <div className="space-y-10">
+                        <RevealOnScroll>
+                            <h1 className="text-5xl md:text-7xl lg:text-8xl font-display leading-tight text-text-primary tracking-tighter">
+                                Engineer. Designer.<br />
+                                <span className="text-terracotta font-normal">Builder.</span>
+                            </h1>
+                        </RevealOnScroll>
+
+                        <RevealOnScroll>
+                            <div className="space-y-6 text-[18px] font-sans font-light text-text-secondary leading-relaxed max-w-xl">
+                                <p>
+                                    I'm Meet — a 19-year-old full-stack engineer and designer based in Ahmedabad, India. I write this not to impress, but to be honest about where I'm coming from and where I'm going.
                                 </p>
-                                <p className="text-slate-300 mb-4 leading-relaxed">
-                                    I specialize in building high-performance web applications using React and Next.js,
-                                    creating immersive games with Unity, and developing cross-platform mobile apps with React Native CLI.
-                                </p>
-                                <p className="text-slate-300 leading-relaxed">
-                                    When I'm not coding, you'll find me exploring new technologies, contributing to open-source projects,
-                                    or sharing knowledge with the developer community.
+                                <p>
+                                    Today I work across the entire stack — React, Next.js, Node.js, MongoDB, AWS EC2, TypeScript — and I design everything in Figma first. My long-term goal is to build SaaS and AI products for international markets.
                                 </p>
                             </div>
-                        </motion.div>
+                        </RevealOnScroll>
 
-                        <div className="grid grid-cols-2 gap-6">
-                            {achievements.map((achievement, index) => (
-                                <RevealOnScroll key={index}>
-                                    <motion.div
-                                        whileHover={{ y: -8, scale: 1.05 }}
-                                        className="glass-card p-8 rounded-2xl text-center border border-white/10 hover:border-accent/30 transition-all"
-                                    >
-                                        <achievement.icon className="w-12 h-12 mx-auto mb-4 text-accent" />
-                                        <div className="text-4xl font-bold gradient-text mb-2">
-                                            <CountUpAnimation
-                                                end={achievement.number}
-                                                suffix={achievement.suffix || ''}
-                                                decimals={achievement.decimals || 0}
-                                            />
-                                        </div>
-                                        <div className="text-sm text-slate-400">{achievement.label}</div>
-                                    </motion.div>
-                                </RevealOnScroll>
-                            ))}
-                        </div>
+                        {/* Social Links */}
+                        <RevealOnScroll>
+                            <div className="flex flex-wrap items-center gap-x-10 gap-y-4 pt-4">
+                                <a href={personalData.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-text-muted hover:text-terracotta transition-colors group">
+                                    GitHub <ExternalLink size={12} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                                </a>
+                                <a href={personalData.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-text-muted hover:text-terracotta transition-colors group">
+                                    LinkedIn <ExternalLink size={12} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                                </a>
+                                <a href={`mailto:${personalData.email}`} className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-text-muted hover:text-terracotta transition-colors group">
+                                    Email <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
+                                </a>
+                            </div>
+                        </RevealOnScroll>
                     </div>
-                </RevealOnScroll>
 
-                {/* Skills Section */}
-                <RevealOnScroll>
-                    <div className="mb-32">
-                        <h2 className="text-4xl font-bold mb-12 text-center">Core Skills</h2>
-                        <div className="grid md:grid-cols-2 gap-8">
-                            {skills.map((skill, index) => (
+                    {/* Right Column: Interactive Cards */}
+                    <div className="space-y-8 lg:sticky lg:top-32 font-sans">
+
+                        {/* Status Card */}
+                        <RevealOnScroll>
+                            <div className="glass-card bg-warm-white/40 p-8 relative overflow-hidden group border border-border/20 rounded-3xl shadow-sm">
+                                <div className="absolute top-0 right-0 p-4">
+                                    <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                                </div>
+                                <span className="text-[9px] uppercase tracking-[0.25em] text-terracotta font-bold mb-3 block">Currently Operating</span>
+                                <h3 className="text-2xl font-display text-text-primary mb-2 tracking-tight">
+                                    At {currentJob.company}
+                                </h3>
+                                <p className="text-sm font-light text-text-secondary leading-relaxed">
+                                    Developing production {currentJob.tech[0]} systems and premium digital experiences as a {currentJob.role}.
+                                </p>
+                            </div>
+                        </RevealOnScroll>
+
+                        {/* Stats Row */}
+                        <RevealOnScroll>
+                            <div className="grid grid-cols-3 gap-4">
+                                {statsData.slice(0, 3).map((stat, idx) => (
+                                    <div key={idx} className="glass-card bg-warm-white/40 p-6 text-center group hover:bg-warm-white/70 transition-all border border-border/20 rounded-3xl">
+                                        <div className="text-3xl font-display text-text-primary mb-1 tracking-tight group-hover:text-terracotta transition-colors">
+                                            {stat.number}
+                                        </div>
+                                        <div className="text-[9px] font-bold uppercase tracking-[0.15em] text-text-muted">
+                                            {stat.label}
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </RevealOnScroll>
+
+                        {/* Skills List */}
+                        <RevealOnScroll>
+                            <div className="glass-card bg-warm-white p-8 space-y-8 border border-border/20 rounded-3xl shadow-sm">
+                                <span className="text-[9px] uppercase tracking-[0.25em] text-text-muted font-bold block mb-4 underline decoration-terracotta/20 underline-offset-4">Technical Stack</span>
+                                <div className="grid grid-cols-2 gap-x-8 gap-y-10">
+                                    {flatSkills.map((skill, idx) => (
+                                        <div key={idx} className="relative group">
+                                            <div className="flex items-center justify-between mb-2">
+                                                <span className="text-[11px] font-bold uppercase tracking-widest text-text-primary group-hover:text-terracotta transition-colors">{skill}</span>
+                                            </div>
+                                            <div className="w-full h-[1px] bg-border relative overflow-hidden">
+                                                <motion.div
+                                                    initial={{ x: "-100%" }}
+                                                    whileInView={{ x: 0 }}
+                                                    viewport={{ once: true }}
+                                                    transition={{ duration: 0.8, delay: idx * 0.05 }}
+                                                    className="absolute inset-0 bg-terracotta/40"
+                                                />
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </RevealOnScroll>
+                    </div>
+                </div>
+
+                {/* Career Journey */}
+                <div className="mt-32 pt-16 border-t border-border/20">
+                    <RevealOnScroll>
+                        <div className="max-w-xl mb-16">
+                            <h2 className="text-4xl md:text-5xl font-display text-text-primary mb-4 tracking-tight">Career Journey</h2>
+                            <p className="text-lg font-sans font-light text-text-secondary">A timeline of self-taught growth and building production systems.</p>
+                        </div>
+                    </RevealOnScroll>
+
+                    <div className="relative pl-10 md:pl-0">
+                        {/* Vertical Line */}
+                        <div className="absolute left-[39px] md:left-1/2 top-0 bottom-0 w-[1px] bg-border opacity-20" />
+
+                        <div className="space-y-20">
+                            {timelineData.map((item, index) => (
                                 <motion.div
                                     key={index}
-                                    initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                                    whileInView={{ opacity: 1, x: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: index * 0.1 }}
-                                    className="glass-card p-6 rounded-2xl border border-white/10 hover:border-accent/30 transition-all"
-                                >
-                                    <div className="flex items-center justify-between mb-4">
-                                        <div className="flex items-center gap-3">
-                                            <skill.icon className="w-8 h-8 text-accent" />
-                                            <h3 className="text-xl font-semibold">{skill.name}</h3>
-                                        </div>
-                                        <span className="text-2xl font-bold gradient-text">{skill.level}%</span>
-                                    </div>
-                                    <div className="h-3 bg-slate-800 rounded-full overflow-hidden">
-                                        <motion.div
-                                            initial={{ width: 0 }}
-                                            whileInView={{ width: `${skill.level}%` }}
-                                            viewport={{ once: true }}
-                                            transition={{ duration: 1, delay: index * 0.1 + 0.3 }}
-                                            className={`h-full bg-gradient-to-r ${skill.color} rounded-full`}
-                                        />
-                                    </div>
-                                </motion.div>
-                            ))}
-                        </div>
-                    </div>
-                </RevealOnScroll>
-
-                {/* Timeline */}
-                <RevealOnScroll>
-                    <div className="mb-32">
-                        <h2 className="text-4xl font-bold mb-16 text-center">My Journey</h2>
-                        <div className="relative">
-                            {/* Timeline Line */}
-                            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-blue-500 via-purple-500 to-pink-500 opacity-30 hidden md:block" />
-
-                            {timeline.map((item, index) => (
-                                <motion.div
-                                    key={index}
-                                    initial={{ opacity: 0, y: 50 }}
+                                    initial={{ opacity: 0, y: 20 }}
                                     whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: index * 0.2 }}
-                                    className={`relative mb-12 md:mb-16 grid md:grid-cols-2 gap-8 md:gap-16 ${index % 2 === 0 ? '' : 'md:direction-rtl'
-                                        }`}
+                                    viewport={{ once: true, margin: "-100px" }}
+                                    className={`relative flex flex-col md:flex-row items-center justify-between gap-12 ${index % 2 === 0 ? '' : 'md:flex-row-reverse'}`}
                                 >
-                                    {/* Year Badge */}
-                                    <div className={`hidden md:flex items-center ${index % 2 === 0 ? 'justify-end' : 'justify-start md:order-2'}`}>
-                                        <motion.div
-                                            whileHover={{ scale: 1.1 }}
-                                            className="glass-card px-6 py-3 rounded-full border-2 border-accent/50 font-bold text-accent"
-                                        >
-                                            {item.year}
-                                        </motion.div>
+                                    {/* Content Container */}
+                                    <div className="w-full md:w-[42%] text-left">
+                                        <div className={`p-8 bg-warm-white border border-border/10 rounded-3xl shadow-sm hover:shadow-md transition-all ${index % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>
+                                            <span className="text-terracotta font-display text-2xl mb-1 block tracking-tight">{item.year}</span>
+                                            <h3 className="text-[11px] font-bold uppercase tracking-[0.3em] text-text-primary mb-3">{item.title}</h3>
+                                            <p className="text-sm font-sans font-light text-text-secondary leading-relaxed">
+                                                {item.description}
+                                            </p>
+                                        </div>
                                     </div>
 
-                                    {/* Content Card */}
-                                    <motion.div
-                                        whileHover={{ scale: 1.03, y: -5 }}
-                                        className={`glass-card p-8 rounded-2xl border border-white/10 hover:border-accent/30 transition-all ${index % 2 === 0 ? '' : 'md:order-1'
-                                            }`}
-                                    >
-                                        <div className="text-4xl mb-4">{item.icon}</div>
-                                        <div className="md:hidden text-accent font-bold mb-2">{item.year}</div>
-                                        <h3 className="text-2xl font-bold mb-2 gradient-text">{item.title}</h3>
-                                        <p className="text-accent font-semibold mb-3">{item.company}</p>
-                                        <p className="text-slate-300 leading-relaxed">{item.description}</p>
-                                    </motion.div>
+                                    {/* Middle Circle */}
+                                    <div className="absolute left-[39px] md:left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center">
+                                        <div className="w-8 h-8 rounded-full border border-border bg-cream flex items-center justify-center z-10 shadow-sm">
+                                            <div className="w-2 h-2 rounded-full bg-terracotta" />
+                                        </div>
+                                    </div>
 
-                                    {/* Center Dot */}
-                                    <div className="absolute left-1/2 top-8 transform -translate-x-1/2 w-4 h-4 bg-accent rounded-full border-4 border-dark hidden md:block" />
+                                    {/* Spacer */}
+                                    <div className="hidden md:block w-[42%]" />
                                 </motion.div>
                             ))}
                         </div>
                     </div>
-                </RevealOnScroll>
+                </div>
 
-                {/* Call to Action */}
+                {/* Footer Quote */}
                 <RevealOnScroll>
-                    <motion.div
-                        variants={scaleIn}
-                        className="text-center glass-card p-12 rounded-3xl border border-white/10"
-                    >
-                        <h2 className="text-4xl font-bold mb-6 gradient-text-animated">
-                            Let's Build Something Amazing Together
-                        </h2>
-                        <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
-                            I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
-                        </p>
-                        <motion.a
-                            href="#contact"
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                            className="inline-block px-10 py-5 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-bold rounded-full hover:shadow-2xl hover:shadow-accent/50 transition-all"
-                        >
-                            Get In Touch
-                        </motion.a>
-                    </motion.div>
+                    <div className="mt-32 text-center py-20 border-t border-border/20 relative">
+                        <div className="max-w-4xl mx-auto space-y-8">
+                            <Sparkles className="mx-auto text-terracotta opacity-20" size={32} />
+                            <h3 className="text-2xl md:text-4xl font-display text-text-primary leading-relaxed tracking-tight px-4">
+                                "Precision in design. Depth in engineering. Built for brands that don't settle"
+                            </h3>
+                            <div>
+                                <p className="text-[10px] uppercase tracking-[0.4em] font-bold text-terracotta mb-1">Meet Patel</p>
+                                <p className="text-[9px] uppercase tracking-[0.3em] font-bold text-text-muted">Ahmedabad, India / Remote</p>
+                            </div>
+                        </div>
+                    </div>
                 </RevealOnScroll>
             </div>
         </div>

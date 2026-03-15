@@ -7,21 +7,10 @@ import Contact from '../Components/Contact';
 const Home = () => {
     return (
         <>
-            <section id="home">
-                <Hero />
-            </section>
-
-            <section id="skills" className="section-padding">
-                <Skills />
-            </section>
-
-            <section id="projects" className="section-padding">
-                <Projects />
-            </section>
-
-            <section id="contact" className="section-padding">
-                <Contact />
-            </section>
+            <Hero />
+            <Skills />
+            <Projects />
+            <Contact />
         </>
     );
 };

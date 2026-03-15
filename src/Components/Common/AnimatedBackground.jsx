@@ -1,27 +1,41 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 /**
  * Animated Background Component
- * Modern dot matrix background inspired by Aceternity UI
+ * Warm cream base with subtle terracotta blobs and paper texture
  */
 const AnimatedBackground = React.memo(() => {
     return (
-        <div className="fixed top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none bg-slate-950 will-change-transform">
-            {/* Dot grid pattern */}
-            <div
-                className="absolute inset-0 opacity-20"
-                style={{
-                    backgroundImage: `radial-gradient(circle, rgba(139, 92, 246, 0.15) 1px, transparent 1px)`,
-                    backgroundSize: '40px 40px'
+        <div className="fixed inset-0 overflow-hidden -z-10 pointer-events-none bg-cream noise-texture">
+            {/* Top Right Blob */}
+            <motion.div
+                animate={{
+                    x: [0, 30, 0],
+                    y: [0, -30, 0],
+                    scale: [1, 1.05, 1],
                 }}
+                transition={{
+                    duration: 15,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                }}
+                className="absolute -top-[5%] -right-[5%] w-[40%] h-[40%] rounded-full bg-terracotta/[0.04] blur-[80px]"
             />
 
-            {/* Radial gradient overlay - center glow */}
-            <div
-                className="absolute inset-0"
-                style={{
-                    background: 'radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.1) 0%, transparent 50%)'
+            {/* Bottom Left Blob */}
+            <motion.div
+                animate={{
+                    x: [0, -20, 0],
+                    y: [0, 20, 0],
+                    scale: [1, 1.1, 1],
                 }}
+                transition={{
+                    duration: 18,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                }}
+                className="absolute -bottom-[5%] -left-[5%] w-[50%] h-[50%] rounded-full bg-terra-muted/[0.08] blur-[90px]"
             />
         </div>
     );

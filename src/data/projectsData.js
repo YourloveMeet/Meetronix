@@ -1,117 +1,154 @@
-// Sample project data with detailed information
 export const projectsData = [
     {
-        id: 1,
-        title: 'E-Commerce Platform',
-        category: 'web',
-        description: 'A full-stack e-commerce platform with real-time inventory management, payment integration, and admin dashboard.',
-        longDescription: 'Built a comprehensive e-commerce solution featuring real-time inventory tracking, secure payment processing via Stripe, advanced product filtering, shopping cart functionality, order management system, and a powerful admin dashboard for managing products, orders, and customers.',
-        image: '/projects/ecommerce.jpg',
-        technologies: ['React', 'Node.js', 'MongoDB', 'Stripe', 'Redis', 'AWS'],
-        liveUrl: 'https://example.com',
-        githubUrl: 'https://github.com',
+        id: "fauna-rituals",
+        title: "Fauna Rituals",
+        subtitle: "Luxury skincare for high-end rituals.",
+        category: "web",
+        badge: "Live",
         featured: true,
-        challenge: 'Implementing real-time inventory updates across multiple concurrent users while maintaining data consistency.',
-        solution: 'Used Redis for caching and WebSocket connections for real-time updates, with optimistic locking in MongoDB to prevent race conditions.',
-        results: ['99.9% uptime', '2s average load time', '500+ daily active users']
+        image: "/assets/projects/sc1.png",
+        tags: ["React", "Custom Tool", "Framer Motion"],
+        technologies: ["React", "Next.js", "Tailwind CSS", "Framer Motion", "Figma"],
+        liveUrl: "https://faunarituals.com",
+        githubUrl: "",
+        description: "A luxury ecommerce platform for architectural rituals and high-end lifestyle.",
+        longDescription: "A luxury ecommerce platform for architectural rituals and high-end lifestyle. Agency-level design with custom animations and a premium product browsing experience. Built from the ground up to reflect the brand's commitment to quality.",
+        challenge: "Create a brand-forward ecommerce experience that felt as premium as the product itself — not a generic Shopify template.",
+        solution: "Designed entirely in Figma with a refined warm palette, custom scroll animations using Framer Motion, and a bespoke product card system built from scratch in React.",
+        results: [
+            "Achieved agency-level visual quality",
+            "Widely regarded as the strongest design work",
+            "Increased engagement by 40% through custom FX"
+        ],
     },
     {
-        id: 2,
-        title: 'Adventure RPG Game',
-        category: 'game',
-        description: '3D adventure game built with Unity featuring procedural terrain generation and AI-driven NPCs.',
-        longDescription: 'Developed an immersive 3D RPG with procedural terrain generation, dynamic weather system, sophisticated AI for NPCs using behavior trees, quest system, inventory management, and custom shaders for stylized graphics.',
-        image: '/projects/rpg-game.jpg',
-        technologies: ['Unity', 'C#', 'Blender', 'Photon', 'PlayFab'],
-        liveUrl: 'https://game-demo.com',
-        githubUrl: 'https://github.com',
+        id: "gearguard",
+        title: "GearGuard AI",
+        subtitle: "Intelligent analytics for hardware protection.",
+        category: "saas",
+        badge: "SaaS",
         featured: true,
-        challenge: 'Optimizing performance for procedural terrain generation while maintaining visual quality.',
-        solution: 'Implemented LOD system, chunk-based loading, and GPU-based terrain generation with compute shaders.',
-        results: ['60 FPS on mid-range devices', '10,000+ downloads', '4.5★ rating']
+        image: "/assets/projects/gearguard_ai.png",
+        tags: ["React", "AI", "Tailwind"],
+        technologies: ["React", "Node.js", "Express", "MongoDB", "AWS EC2", "TypeScript"],
+        liveUrl: "https://gearguard-ai.vercel.app",
+        githubUrl: "",
+        description: "A production SaaS platform with an AWS EC2 Node.js backend.",
+        longDescription: "A production SaaS platform with an AWS EC2 Node.js backend. Features intelligent hardware analytics, maintenance prediction, and real-time monitoring dashboards. Built for heavy-duty industrial monitoring.",
+        challenge: "Build a full production SaaS with persistent backend infrastructure — not just a frontend demo.",
+        solution: "Deployed a Node.js/Express API on AWS EC2, connected to MongoDB Atlas, with a React frontend consuming the live API. Implemented JWT auth.",
+        results: [
+            "Live production SaaS with real infrastructure",
+            "Zero downtime since deployment",
+            "Processed over 100k data points"
+        ],
     },
     {
-        id: 3,
-        title: 'Fitness Tracking App',
-        category: 'mobile',
-        description: 'Cross-platform mobile app for tracking workouts, nutrition, and health metrics with social features.',
-        longDescription: 'Created a comprehensive fitness tracking application with workout logging, nutrition tracking, progress analytics, social feed for sharing achievements, personalized workout recommendations, and integration with wearable devices.',
-        image: '/projects/fitness-app.jpg',
-        technologies: ['React Native', 'Firebase', 'Redux', 'HealthKit', 'Google Fit'],
-        liveUrl: 'https://app-store-link.com',
-        githubUrl: 'https://github.com',
+        id: "aliska-stones",
+        title: "Aliska Stones",
+        subtitle: "Artisan jewelry ecommerce.",
+        category: "web",
+        badge: "Live",
         featured: true,
-        challenge: 'Integrating with various health APIs while maintaining battery efficiency.',
-        solution: 'Implemented background sync with exponential backoff and batch API requests to minimize battery drain.',
-        results: ['50,000+ downloads', '4.7★ rating', '85% user retention']
+        image: "/assets/projects/aliskastones.png",
+        tags: ["Next.js", "Ecommerce", "Figma"],
+        technologies: ["Next.js", "Tailwind CSS", "Figma"],
+        liveUrl: "",
+        githubUrl: "",
+        description: "A clean, minimal ecommerce site for an artisan jewelry brand.",
+        longDescription: "A clean, minimal ecommerce site for an artisan jewelry brand. Focused on product presentation, warm visual language, and conversion-optimized layout.",
+        challenge: "Present delicate handmade jewelry in a communication of craftsmanship.",
+        solution: "Designed a clean, light-first layout in Figma with generous white space and large product imagery.",
+        results: [
+            "Live client project",
+            "Increased mobile checkout by 25%",
+            "High performance scores on Lighthouse"
+        ],
     },
     {
-        id: 4,
-        title: 'AI-Powered Dashboard',
-        category: 'web',
-        description: 'Analytics dashboard with AI-driven insights and predictive analytics for business intelligence.',
-        longDescription: 'Built an advanced business intelligence dashboard featuring real-time data visualization, machine learning-powered trend analysis, predictive analytics, custom report generation, and collaborative features for team insights.',
-        image: '/projects/dashboard.jpg',
-        technologies: ['Next.js', 'Python', 'TensorFlow', 'D3.js', 'PostgreSQL'],
-        liveUrl: 'https://dashboard-demo.com',
-        githubUrl: 'https://github.com',
+        id: "celestial-arcade",
+        title: "Celestial Arcade",
+        subtitle: "Immersive space odyssey featuring classic mechanics.",
+        category: "game",
+        badge: "Game",
         featured: false,
-        challenge: 'Processing large datasets in real-time for responsive visualizations.',
-        solution: 'Implemented data streaming with WebSockets, server-side data aggregation, and canvas-based rendering for performance.',
-        results: ['Handle 1M+ data points', '100ms query response', '95% accuracy in predictions']
+        image: "/assets/projects/celestial_arcade.png",
+        tags: ["Unity", "C#", "3D/Graph"],
+        technologies: ["Unity", "C#", "Shader Graph", "Blender"],
+        liveUrl: "",
+        githubUrl: "",
+        description: "An immersive space arcade game built in Unity.",
+        longDescription: "An immersive space arcade game built in Unity featuring classic mechanics reimagined with modern shader effects and UI. Features multiple levels and boss fights.",
+        challenge: "Combine nostalgia-driven mechanics with a visually modern execution.",
+        solution: "Built in Unity with custom Shader Graph materials for space atmosphere, procedural level generation, and a clean HUD system.",
+        results: [
+            "Demonstrates Unity proficiency",
+            "Successful WebGL deployment",
+            "Smooth 60fps performance on mobile"
+        ],
     },
     {
-        id: 5,
-        title: 'Multiplayer Racing Game',
-        category: 'game',
-        description: 'Fast-paced multiplayer racing game with realistic physics and customizable vehicles.',
-        longDescription: 'Developed a high-performance multiplayer racing game featuring realistic vehicle physics, networked multiplayer for up to 8 players, vehicle customization system, multiple tracks, power-ups, and leaderboards.',
-        image: '/projects/racing-game.jpg',
-        technologies: ['Unity', 'C#', 'Photon', 'PlayFab', 'Blender'],
-        liveUrl: 'https://racing-demo.com',
-        githubUrl: 'https://github.com',
+        id: "luxestays",
+        title: "LuxeStays",
+        subtitle: "Premium hotel booking platform.",
+        category: "web",
+        badge: "Demo",
         featured: false,
-        challenge: 'Maintaining synchronized gameplay across players with varying network conditions.',
-        solution: 'Implemented client-side prediction, server reconciliation, and lag compensation techniques.',
-        results: ['20ms average latency', '8-player support', '100+ custom vehicles']
+        image: "/assets/projects/luxestays.png",
+        tags: ["Next.js", "Node.js", "MongoDB"],
+        technologies: ["Next.js", "Node.js", "MongoDB", "Tailwind CSS"],
+        liveUrl: "",
+        githubUrl: "",
+        description: "A luxury hotel booking demo.",
+        longDescription: "A luxury hotel booking demo built for a prospective ₹3L client project. Features property listings, booking flow, and a clean admin dashboard.",
+        challenge: "Demonstrate the capability to deliver a full-featured booking platform.",
+        solution: "Collaborated with a backend developer to build a complete booking system with Next.js frontend.",
+        results: [
+            "Won the client contract",
+            "Feature-complete booking engine",
+            "Scalable architecture"
+        ],
     },
     {
-        id: 6,
-        title: 'Social Media App',
-        category: 'mobile',
-        description: 'Feature-rich social networking app with real-time messaging and content sharing.',
-        longDescription: 'Created a modern social media platform with real-time chat, photo/video sharing, stories feature, likes and comments, user profiles, explore page with recommendations, and push notifications.',
-        image: '/projects/social-app.jpg',
-        technologies: ['React Native', 'Node.js', 'Socket.io', 'MongoDB', 'AWS S3'],
-        liveUrl: 'https://social-app.com',
-        githubUrl: 'https://github.com',
+        id: "meetronix",
+        title: "Meetronix",
+        subtitle: "Personal portfolio — currently reading.",
+        category: "web",
+        badge: "Live",
         featured: false,
-        challenge: 'Handling real-time messaging at scale with message delivery guarantees.',
-        solution: 'Built a message queue system with Redis, implemented offline message caching, and used Socket.io for real-time delivery.',
-        results: ['100,000+ users', '1M+ messages/day', '99.9% delivery rate']
+        image: "/assets/projects/meetronix_meta.png",
+        tags: ["React", "Framer Motion", "Tailwind"],
+        technologies: ["React 19", "Vite", "Tailwind CSS v3", "Framer Motion v12"],
+        liveUrl: "https://meetronix.vercel.app",
+        githubUrl: "",
+        description: "This portfolio site — designed and built from scratch.",
+        longDescription: "This portfolio site — designed and built from scratch. Showcases work, skills, and availability for international freelance projects using the latest React stack.",
+        challenge: "Build a portfolio that competes with agency-quality work.",
+        solution: "Designed with a warm cream & terracotta system, Playfair Display typography, and refined glassmorphism.",
+        results: [
+            "Successfully attracted international clients",
+            "100% performance score",
+            "Mobile-first responsive design"
+        ],
     }
 ];
 
-// Filter projects by category
 export const getProjectsByCategory = (category) => {
     if (category === 'all') return projectsData;
     return projectsData.filter(project => project.category === category);
 };
 
-// Get featured projects
 export const getFeaturedProjects = () => {
     return projectsData.filter(project => project.featured);
 };
 
-// Get project by ID
 export const getProjectById = (id) => {
-    return projectsData.find(project => project.id === parseInt(id));
+    return projectsData.find(project => project.id === id);
 };
 
-// Categories
 export const categories = [
-    { id: 'all', name: 'All Projects', icon: '🚀' },
-    { id: 'web', name: 'Web Development', icon: '🌐' },
-    { id: 'game', name: 'Game Development', icon: '🎮' },
-    { id: 'mobile', name: 'Mobile Apps', icon: '📱' }
+    { id: 'all', name: 'All' },
+    { id: 'web', name: 'Web Dev' },
+    { id: 'saas', name: 'SaaS' },
+    { id: 'game', name: 'Games' }
 ];

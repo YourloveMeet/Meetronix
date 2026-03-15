@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Github, Filter } from 'lucide-react';
-import RevealOnScroll from '../Components/Common/RevealOnScroll';
+import { ExternalLink, Github, X, ArrowRight, Sparkles } from 'lucide-react';
 import { projectsData, categories } from '../data/projectsData';
-import { fadeInUp, staggerContainer, scaleIn } from '../utils/animations';
+import RevealOnScroll from '../Components/Common/RevealOnScroll';
 
 const Portfolio = () => {
     const [selectedCategory, setSelectedCategory] = useState('all');
@@ -14,233 +13,202 @@ const Portfolio = () => {
         ? projectsData
         : projectsData.filter(p => p.category === selectedCategory);
 
-    // Lock body scroll when modal is open
-    React.useEffect(() => {
+    useEffect(() => {
         if (selectedProject) {
             document.body.style.overflow = 'hidden';
         } else {
             document.body.style.overflow = 'unset';
         }
-
-        // Cleanup on unmount
-        return () => {
-            document.body.style.overflow = 'unset';
-        };
     }, [selectedProject]);
 
     return (
-        <div className="min-h-screen pt-24 pb-12">
+        <div className="min-h-screen pt-40 pb-40 bg-cream overflow-hidden">
             <div className="container-custom">
-                {/* Header */}
-                <motion.div
-                    variants={staggerContainer}
-                    initial="hidden"
-                    animate="visible"
-                    className="text-center mb-16"
-                >
-                    <motion.h1
-                        variants={fadeInUp}
-                        className="text-5xl md:text-7xl font-bold mb-6 gradient-text-animated"
-                    >
-                        My Portfolio
-                    </motion.h1>
-                    <motion.p
-                        variants={fadeInUp}
-                        className="text-xl text-slate-400 max-w-3xl mx-auto"
-                    >
-                        A showcase of my best work across web, game, and mobile development
-                    </motion.p>
-                </motion.div>
-
-                {/* Category Filter */}
-                <RevealOnScroll>
-                    <div className="flex flex-wrap justify-center gap-4 mb-16">
-                        {categories.map((category) => (
-                            <motion.button
-                                key={category.id}
-                                onClick={() => setSelectedCategory(category.id)}
-                                whileHover={{ scale: 1.05, y: -2 }}
-                                whileTap={{ scale: 0.95 }}
-                                className={`px-6 py-3 rounded-full font-semibold transition-all ${selectedCategory === category.id
-                                    ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg shadow-accent/30'
-                                    : 'glass border border-white/10 text-slate-300 hover:border-accent/30'
+                {/* Page Header */}
+                <header className="mb-20">
+                    <RevealOnScroll>
+                        <div className="flex items-center gap-3 mb-6">
+                            <span className="text-[10px] uppercase tracking-[.4em] font-bold text-terracotta">Excellence Archive</span>
+                            <div className="w-12 h-[1px] bg-border" />
+                        </div>
+                        <h1 className="text-6xl md:text-8xl font-display leading-[0.9] text-text-primary tracking-tighter mb-12">
+                            Curated Works
+                        </h1>
+                    </RevealOnScroll>
+                    
+                    {/* Filter Tabs */}
+                    <RevealOnScroll>
+                        <div className="flex flex-wrap gap-2 md:gap-3 border-b border-border/20 pb-8">
+                            {categories.map((cat) => (
+                                <button
+                                    key={cat.id}
+                                    onClick={() => setSelectedCategory(cat.id)}
+                                    className={`relative px-8 py-2.5 text-[10px] font-bold uppercase tracking-[0.2em] transition-all duration-500 rounded-full ${
+                                        selectedCategory === cat.id
+                                        ? 'text-white'
+                                        : 'text-text-muted hover:text-text-primary'
                                     }`}
-                            >
-                                <span className="mr-2">{category.icon}</span>
-                                {category.name}
-                            </motion.button>
-                        ))}
-                    </div>
-                </RevealOnScroll>
+                                >
+                                    {selectedCategory === cat.id && (
+                                        <motion.div 
+                                            layoutId="activeTab"
+                                            className="absolute inset-0 bg-terracotta rounded-full -z-10 shadow-lg shadow-terracotta/20"
+                                            transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                                        />
+                                    )}
+                                    {cat.name}
+                                </button>
+                            ))}
+                        </div>
+                    </RevealOnScroll>
+                </header>
 
                 {/* Projects Grid */}
-                <motion.div
-                    layout
-                    className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-                >
-                    <AnimatePresence mode="wait">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+                    <AnimatePresence mode="popLayout">
                         {filteredProjects.map((project, index) => (
                             <motion.div
                                 key={project.id}
                                 layout
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                exit={{ opacity: 0, scale: 0.9 }}
-                                transition={{ delay: index * 0.1 }}
-                                whileHover={{ y: -10 }}
-                                className="glass-card rounded-2xl overflow-hidden border border-white/10 hover:border-accent/30 transition-all cursor-pointer group"
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, scale: 0.95 }}
+                                transition={{ duration: 0.6, delay: index * 0.05 }}
                                 onClick={() => setSelectedProject(project)}
+                                className="group cursor-pointer"
                             >
-                                {/* Project Image */}
-                                <div className="relative h-56 bg-gradient-to-br from-blue-500/20 to-purple-500/20 overflow-hidden">
-                                    <div className="absolute inset-0 flex items-center justify-center text-6xl opacity-50">
-                                        {categories.find(c => c.id === project.category)?.icon}
+                                <div className="relative overflow-hidden aspect-[16/10] bg-cream-dark rounded-3xl shadow-sm border border-border/20">
+                                    <img 
+                                        src={project.image} 
+                                        alt={project.title}
+                                        className="w-full h-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-105"
+                                    />
+                                    <div className="absolute inset-0 bg-charcoal/5 group-hover:bg-transparent transition-colors duration-700" />
+                                    
+                                    <div className="absolute top-6 left-6">
+                                        <div className="px-4 py-1.5 glass-card bg-warm-white/60 backdrop-blur-xl border-white/40 text-[9px] font-bold tracking-[.3em] uppercase text-text-primary rounded-full">
+                                            {project.category}
+                                        </div>
                                     </div>
-                                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                                    <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                                        <div className="flex gap-2">
-                                            <motion.a
-                                                href={project.liveUrl}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                onClick={(e) => e.stopPropagation()}
-                                                whileHover={{ scale: 1.1 }}
-                                                className="p-2 bg-accent rounded-lg text-dark"
-                                            >
-                                                <ExternalLink size={20} />
-                                            </motion.a>
-                                            <motion.a
-                                                href={project.githubUrl}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                onClick={(e) => e.stopPropagation()}
-                                                whileHover={{ scale: 1.1 }}
-                                                className="p-2 bg-slate-800 rounded-lg text-white"
-                                            >
-                                                <Github size={20} />
-                                            </motion.a>
+
+                                    <div className="absolute inset-0 flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
+                                        <div className="glass-card p-6 bg-white/95 backdrop-blur-2xl border-white/20 rounded-2xl">
+                                            <div className="flex items-center justify-between">
+                                                <h3 className="text-xl font-display text-text-primary">Expand Case Study</h3>
+                                                <ArrowRight size={20} className="text-terracotta" />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                {/* Project Info */}
-                                <div className="p-6">
-                                    <h3 className="text-2xl font-bold mb-2 gradient-text">{project.title}</h3>
-                                    <p className="text-slate-400 mb-4 line-clamp-2">{project.description}</p>
-
-                                    {/* Technologies */}
-                                    <div className="flex flex-wrap gap-2">
-                                        {project.technologies.slice(0, 3).map((tech, i) => (
-                                            <span
-                                                key={i}
-                                                className="px-3 py-1 bg-accent/10 text-accent text-xs rounded-full border border-accent/20"
-                                            >
+                                <div className="mt-6 space-y-2 px-2">
+                                    <h2 className="text-3xl font-display text-text-primary tracking-tight">{project.title}</h2>
+                                    <p className="text-sm font-sans font-light text-text-secondary leading-relaxed line-clamp-2">
+                                        {project.subtitle || project.description}
+                                    </p>
+                                    <div className="flex flex-wrap gap-3 pt-2">
+                                        {project.technologies.slice(0, 4).map((tech, i) => (
+                                            <span key={i} className="text-[9px] font-bold uppercase tracking-widest text-text-muted bg-warm-white px-3 py-1 rounded-full border border-border/40">
                                                 {tech}
                                             </span>
                                         ))}
-                                        {project.technologies.length > 3 && (
-                                            <span className="px-3 py-1 text-slate-400 text-xs">
-                                                +{project.technologies.length - 3} more
-                                            </span>
-                                        )}
                                     </div>
                                 </div>
                             </motion.div>
                         ))}
                     </AnimatePresence>
-                </motion.div>
+                </div>
 
-                {/* Project Modal */}
+                {/* Project Modal Portal */}
                 {ReactDOM.createPortal(
-                    <AnimatePresence>
+                    <AnimatePresence mode="wait">
                         {selectedProject && (
                             <motion.div
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 exit={{ opacity: 0 }}
-                                transition={{ duration: 0.3 }}
-                                className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] flex items-center justify-center p-4 overflow-y-auto"
+                                className="fixed inset-0 bg-charcoal/80 backdrop-blur-xl z-[100] flex items-center justify-center p-4 md:p-8"
                                 onClick={() => setSelectedProject(null)}
                             >
                                 <motion.div
-                                    initial={{ scale: 0.9, y: 50, opacity: 0 }}
-                                    animate={{ scale: 1, y: 0, opacity: 1 }}
-                                    exit={{ scale: 0.95, y: 20, opacity: 0 }}
-                                    transition={{ type: "spring", damping: 25, stiffness: 300 }}
+                                    initial={{ y: "100%", scale: 0.95 }}
+                                    animate={{ y: 0, scale: 1 }}
+                                    exit={{ y: "100%", scale: 0.95 }}
+                                    transition={{ type: "spring", damping: 30, stiffness: 200 }}
                                     onClick={(e) => e.stopPropagation()}
-                                    className="glass-card max-w-4xl w-full my-8 rounded-3xl p-8 border border-white/20 max-h-[90vh] overflow-y-auto"
+                                    className="bg-cream w-full max-w-6xl h-full max-h-[90vh] overflow-y-auto rounded-3xl shadow-2xl relative border border-border/40 selection:bg-terracotta selection:text-white"
                                 >
-                                    <div className="flex justify-between items-start mb-6">
-                                        <div>
-                                            <h2 className="text-4xl font-bold gradient-text-animated mb-2">
-                                                {selectedProject.title}
-                                            </h2>
-                                            <div className="flex gap-4">
-                                                <a
-                                                    href={selectedProject.liveUrl}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    className="text-accent hover:underline flex items-center gap-1"
-                                                >
-                                                    <ExternalLink size={16} /> Live Demo
-                                                </a>
-                                                <a
-                                                    href={selectedProject.githubUrl}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    className="text-slate-400 hover:text-white flex items-center gap-1"
-                                                >
-                                                    <Github size={16} /> Source Code
-                                                </a>
-                                            </div>
+                                    <div className="sticky top-0 bg-cream/90 backdrop-blur-md z-30 px-6 py-4 border-b border-border/10 flex items-center justify-between">
+                                        <div className="flex items-center gap-4">
+                                            <span className="text-[10px] font-bold uppercase tracking-[.3em] text-terracotta">{selectedProject.category}</span>
+                                            <div className="w-8 h-[1px] bg-border" />
+                                            <span className="text-[10px] font-bold uppercase tracking-[.3em] text-text-muted">{selectedProject.title}</span>
                                         </div>
-                                        <button
+                                        <button 
                                             onClick={() => setSelectedProject(null)}
-                                            className="text-4xl text-slate-400 hover:text-white transition-colors"
+                                            className="p-2.5 rounded-full hover:bg-cream-dark transition-colors"
                                         >
-                                            ×
+                                            <X size={20} className="text-text-primary" />
                                         </button>
                                     </div>
 
-                                    <p className="text-slate-300 mb-6 text-lg leading-relaxed">
-                                        {selectedProject.longDescription}
-                                    </p>
-
-                                    {/* Challenge & Solution */}
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                                        <div className="glass p-6 rounded-xl border border-orange-500/20">
-                                            <h3 className="text-xl font-bold text-orange-400 mb-3">Challenge</h3>
-                                            <p className="text-slate-300">{selectedProject.challenge}</p>
-                                        </div>
-                                        <div className="glass p-6 rounded-xl border border-green-500/20">
-                                            <h3 className="text-xl font-bold text-green-400 mb-3">Solution</h3>
-                                            <p className="text-slate-300">{selectedProject.solution}</p>
-                                        </div>
-                                    </div>
-
-                                    {/* Results */}
-                                    <div className="mb-6">
-                                        <h3 className="text-xl font-bold mb-3">Results</h3>
-                                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                                            {selectedProject.results.map((result, i) => (
-                                                <div key={i} className="glass p-4 rounded-xl text-center border border-white/10">
-                                                    <p className="text-accent font-semibold">{result}</p>
+                                    <div className="px-6 py-12 md:px-12 md:py-20 lg:py-24 max-w-5xl mx-auto">
+                                        <div className="grid lg:grid-cols-2 gap-16 items-start mb-20">
+                                            <div className="space-y-8">
+                                                <h2 className="text-5xl md:text-7xl font-display text-text-primary tracking-tighter">
+                                                    {selectedProject.title}
+                                                </h2>
+                                                <p className="text-lg font-sans font-light text-text-secondary leading-relaxed">
+                                                    {selectedProject.longDescription}
+                                                </p>
+                                                <div className="flex flex-wrap items-center gap-8 pt-4">
+                                                    <a href={selectedProject.liveUrl} target="_blank" rel="noreferrer" className="flex items-center gap-2.5 text-[11px] font-bold uppercase tracking-widest text-terracotta hover:text-terra-dark transition-colors group">
+                                                        Launch Project <ExternalLink size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                                                    </a>
+                                                    {selectedProject.githubUrl && (
+                                                        <a href={selectedProject.githubUrl} target="_blank" rel="noreferrer" className="flex items-center gap-2.5 text-[11px] font-bold uppercase tracking-widest text-text-muted hover:text-text-primary transition-colors group">
+                                                            GitHub Source <Github size={14} className="group-hover:translate-x-0.5 transition-transform" />
+                                                        </a>
+                                                    )}
                                                 </div>
-                                            ))}
-                                        </div>
-                                    </div>
+                                            </div>
 
-                                    {/* Technologies */}
-                                    <div>
-                                        <h3 className="text-xl font-bold mb-3">Technologies Used</h3>
-                                        <div className="flex flex-wrap gap-3">
-                                            {selectedProject.technologies.map((tech, i) => (
-                                                <span
-                                                    key={i}
-                                                    className="px-4 py-2 bg-accent/10 text-accent rounded-full border border-accent/30"
-                                                >
-                                                    {tech}
-                                                </span>
+                                            <div className="bg-warm-white p-10 rounded-3xl border border-border/20 shadow-sm">
+                                                <span className="text-[10px] uppercase tracking-widest text-text-muted font-bold block mb-8 underline decoration-terracotta/30 underline-offset-8">Tech Stack</span>
+                                                <div className="flex flex-wrap gap-3">
+                                                    {selectedProject.technologies.map((tech, i) => (
+                                                        <div key={i} className="px-4 py-2 bg-cream-dark rounded-full text-[11px] font-bold text-text-primary">
+                                                            {tech}
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div className="aspect-video mb-20 rounded-3xl overflow-hidden shadow-xl">
+                                            <img src={selectedProject.image} alt={project.title} className="w-full h-full object-cover" />
+                                        </div>
+
+                                        <div className="grid md:grid-cols-3 gap-8 mb-20">
+                                            {[
+                                                { label: "Challenge", text: selectedProject.challenge },
+                                                { label: "Execution", text: selectedProject.solution },
+                                                { label: "Impact", list: selectedProject.results }
+                                            ].map((block, i) => (
+                                                <div key={i} className="space-y-4 p-8 bg-warm-white rounded-3xl border border-border/20">
+                                                    <h4 className="text-[10px] font-bold uppercase tracking-[.4em] text-terracotta">{block.label}</h4>
+                                                    {block.text && <p className="text-sm font-sans font-light text-text-secondary leading-relaxed">{block.text}</p>}
+                                                    {block.list && (
+                                                        <ul className="space-y-3">
+                                                            {block.list.map((item, j) => (
+                                                                <li key={j} className="text-sm font-sans font-light text-text-secondary flex items-start gap-2">
+                                                                    <div className="w-1.5 h-1.5 rounded-full bg-terracotta mt-1.5 shrink-0" />
+                                                                    {item}
+                                                                </li>
+                                                            ))}
+                                                        </ul>
+                                                    )}
+                                                </div>
                                             ))}
                                         </div>
                                     </div>

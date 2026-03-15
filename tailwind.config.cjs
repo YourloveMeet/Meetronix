@@ -7,25 +7,35 @@ module.exports = {
     theme: {
         extend: {
             colors: {
-                primary: "#0f172a", // Deep Navy
-                secondary: "#1e293b", // Slate
-                accent: "#38bdf8", // Sky Blue
-                "accent-glow": "rgba(56, 189, 248, 0.5)",
-                dark: "#020617", // Almost Black
+                cream: "#FAF7F2",
+                "cream-dark": "#F2EDE4",
+                "warm-white": "#FFFCF8",
+                terracotta: "#C4622D",
+                "terra-light": "#E8896A",
+                "terra-dark": "#9A4520",
+                "terra-muted": "#F0D5C8",
+                charcoal: "#1C1917",
+                "text-primary": "#2C2420",
+                "text-secondary": "#7A6A62",
+                "text-muted": "#AFA099",
+                border: "var(--border)",
+                "border-strong": "var(--border-strong)",
+                "glass-bg": "var(--glass-bg)",
+                "glass-border": "var(--glass-border)",
             },
             fontFamily: {
-                sans: ['Inter', 'sans-serif'],
-                heading: ['Outfit', 'sans-serif'],
+                sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                display: ['"Outfit"', 'sans-serif'],
             },
             animation: {
-                'blob': 'blob 7s infinite',
+                'blob': 'warm-blob 12s infinite ease-in-out',
             },
             keyframes: {
-                blob: {
-                    '0%': { transform: 'translate(0px, 0px) scale(1)' },
-                    '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
-                    '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
-                    '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                'warm-blob': {
+                    '0%': { transform: 'translate(0px, 0px) scale(1)', opacity: 0.1 },
+                    '33%': { transform: 'translate(40px, -60px) scale(1.2)', opacity: 0.08 },
+                    '66%': { transform: 'translate(-30px, 30px) scale(0.9)', opacity: 0.12 },
+                    '100%': { transform: 'translate(0px, 0px) scale(1)', opacity: 0.1 },
                 }
             }
         },
