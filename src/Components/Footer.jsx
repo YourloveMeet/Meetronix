@@ -29,11 +29,17 @@ const Footer = () => {
                             </p>
                         </div>
                         
-                        <div className="flex items-center gap-8">
+                        <div className="flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-16">
                             <a href={`mailto:${personalData.email}`} className="group flex flex-col">
                                 <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-text-muted mb-1">Direct Communication</span>
                                 <span className="text-lg font-display text-text-primary group-hover:text-terracotta transition-colors border-b-2 border-transparent group-hover:border-terracotta/20 pb-1">
                                     {personalData.email}
+                                </span>
+                            </a>
+                            <a href={`tel:${personalData.phone}`} className="group flex flex-col">
+                                <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-text-muted mb-1">WhatsApp / Call</span>
+                                <span className="text-lg font-display text-text-primary group-hover:text-terracotta transition-colors border-b-2 border-transparent group-hover:border-terracotta/20 pb-1">
+                                    {personalData.phone}
                                 </span>
                             </a>
                         </div>

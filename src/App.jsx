@@ -13,6 +13,7 @@ const Portfolio = lazy(() => import('./pages/Portfolio'));
 const Services = lazy(() => import('./pages/Services'));
 const Blog = lazy(() => import('./pages/Blog'));
 const BlogPost = lazy(() => import('./pages/BlogPost'));
+const HireMe = lazy(() => import('./pages/HireMe'));
 
 // Loading component
 const PageLoader = () => (
@@ -39,6 +40,7 @@ function App() {
                                 <Route path="/services" element={<Services />} />
                                 <Route path="/blog" element={<Blog />} />
                                 <Route path="/blog/:slug" element={<BlogPost />} />
+                                <Route path="/hire-me" element={<HireMe />} />
                             </Routes>
                         </AnimatePresence>
                     </Suspense>

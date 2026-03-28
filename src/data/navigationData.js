@@ -5,7 +5,7 @@ export const navLinks = [
     { label: "Blog",     path: "/blog" },
 ];
 
-export const navCTA = { label: "Hire Me →", path: "/contact" };
+export const navCTA = { label: "Hire Me →", path: "/hire-me" };
 
 export const footerData = {
     logo: "Meet",
