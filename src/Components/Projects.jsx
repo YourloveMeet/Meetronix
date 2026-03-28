@@ -38,6 +38,11 @@ const Projects = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.8, delay: index * 0.1 }}
+                            onClick={() => {
+                                if (project.liveUrl) {
+                                    window.open(project.liveUrl, '_blank', 'noopener,noreferrer');
+                                }
+                            }}
                             className="group cursor-pointer"
                         >
                             <div className="relative aspect-video bg-cream-dark overflow-hidden rounded-3xl mb-6 shadow-sm border border-border/20">
@@ -53,7 +58,9 @@ const Projects = () => {
                                 <div className="absolute bottom-6 left-6 right-6 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
                                     <div className="glass-card p-4 bg-white/90 backdrop-blur-2xl border-white/20 rounded-2xl">
                                         <div className="flex items-center justify-between">
-                                            <span className="text-[10px] font-bold uppercase tracking-widest text-text-primary">View Case Study</span>
+                                            <span className="text-[10px] font-bold uppercase tracking-widest text-text-primary">
+                                                {project.liveUrl ? 'Launch Project' : 'View Case Study'}
+                                            </span>
                                             <ArrowRight size={16} className="text-terracotta" />
                                         </div>
                                     </div>

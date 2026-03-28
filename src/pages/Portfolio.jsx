@@ -74,7 +74,13 @@ const Portfolio = () => {
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, scale: 0.95 }}
                                 transition={{ duration: 0.6, delay: index * 0.05 }}
-                                onClick={() => setSelectedProject(project)}
+                                onClick={() => {
+                                    if (project.liveUrl) {
+                                        window.open(project.liveUrl, '_blank', 'noopener,noreferrer');
+                                    } else {
+                                        setSelectedProject(project);
+                                    }
+                                }}
                                 className="group cursor-pointer"
                             >
                                 <div className="relative overflow-hidden aspect-[16/10] bg-cream-dark rounded-3xl shadow-sm border border-border/20">
@@ -94,7 +100,9 @@ const Portfolio = () => {
                                     <div className="absolute inset-0 flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
                                         <div className="glass-card p-6 bg-white/95 backdrop-blur-2xl border-white/20 rounded-2xl">
                                             <div className="flex items-center justify-between">
-                                                <h3 className="text-xl font-display text-text-primary">Expand Case Study</h3>
+                                                <h3 className="text-xl font-display text-text-primary">
+                                                    {project.liveUrl ? 'Launch Project' : 'Expand Case Study'}
+                                                </h3>
                                                 <ArrowRight size={20} className="text-terracotta" />
                                             </div>
                                         </div>
