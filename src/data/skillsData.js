@@ -1,44 +1,44 @@
-import { Globe, Gamepad2, Smartphone, Database } from 'lucide-react';
+// Skill category data for the Skills component
 
 export const skillCategories = [
     {
-        category: "Website Development",
-        icon: Globe,
+        name: "Website Development",
+        iconName: "Globe",
         skills: [
-            { name: "React & Next.js", focus: "Premium Architectures", status: "Master", metric: "40+ Builds" },
-            { name: "TypeScript", focus: "Type Safety", status: "Core", metric: "Daily Ops" },
-            { name: "Tailwind CSS", focus: "Precision Styling", status: "Core", metric: "High Volume" },
-            { name: "Node.js", focus: "Runtime Efficiency", status: "Core", metric: "30+ Systems" }
+            { name: "React & Next.js", focus: "Premium Architectures", metric: "40+ Builds" },
+            { name: "TypeScript", focus: "Type Safety", metric: "Daily Ops" },
+            { name: "Tailwind CSS", focus: "Precision Styling", metric: "High Volume" },
+            { name: "Node.js", focus: "Runtime Efficiency", metric: "30+ Systems" }
         ]
     },
     {
-        category: "Game Development",
-        icon: Gamepad2,
+        name: "Game Development",
+        iconName: "Gamepad2",
         skills: [
-            { name: "Unity", focus: "Real-time Interaction", status: "Master", metric: "3+ Years" },
-            { name: "C#", focus: "Game Logic", status: "Core", metric: "Daily Ops" },
-            { name: "Blender", focus: "3D Modeling", status: "Core", metric: "Creative Work" },
-            { name: "Shader Graph", focus: "Visual Effects", status: "Specialist", metric: "Advanced" }
+            { name: "Unity", focus: "Real-time Interaction", metric: "3+ Years" },
+            { name: "C#", focus: "Game Logic", metric: "Daily Ops" },
+            { name: "Blender", focus: "3D Modeling", metric: "Creative Work" },
+            { name: "Shader Graph", focus: "Visual Effects", metric: "Advanced" }
         ]
     },
     {
-        category: "App Development",
-        icon: Smartphone,
+        name: "Application Development",
+        iconName: "Smartphone",
         skills: [
-            { name: "React Native", focus: "Cross-Platform", status: "Core", metric: "Enterprise" },
-            { name: "Firebase", focus: "BaaS Solutions", status: "Core", metric: "Production" },
-            { name: "Redux", focus: "State Architecture", status: "Specialist", metric: "Complex Apps" },
-            { name: "Native Modules", focus: "Deep Integration", status: "Core", metric: "Advanced" }
+            { name: "React Native", focus: "Cross-Platform", metric: "Enterprise" },
+            { name: "Firebase", focus: "BaaS Solutions", metric: "Production" },
+            { name: "Redux", focus: "State Architecture", metric: "Complex Apps" },
+            { name: "Native Modules", focus: "Deep Integration", metric: "Advanced" }
         ]
     },
     {
-        category: "Backend & Database",
-        icon: Database,
+        name: "Backend Architecture",
+        iconName: "Database",
         skills: [
-            { name: "Node.js & Express", focus: "API Resilience", status: "Master", metric: "Production" },
-            { name: "MongoDB", focus: "NoSQL Architectures", status: "Master", metric: "Cloud Scale" },
-            { name: "PostgreSQL", focus: "Relational Logic", status: "Core", metric: "Data Integrity" },
-            { name: "GraphQL", focus: "Query Optimization", status: "Specialist", metric: "Microservices" }
+            { name: "Node.js & Express", focus: "API Resilience", metric: "Production" },
+            { name: "MongoDB", focus: "NoSQL Architectures", metric: "Cloud Scale" },
+            { name: "PostgreSQL", focus: "Relational Logic", metric: "Data Integrity" },
+            { name: "GraphQL", focus: "Query Optimization", metric: "Microservices" }
         ]
     }
 ];
