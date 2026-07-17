@@ -3,14 +3,28 @@
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=DM+Sans:ital,wght@0,100..900;1,100..900&display=swap"
     rel="stylesheet">
-  <title>Meet Patel — Full Stack Engineer & Designer | Meetronix</title>
+  <title>Trevonka — Premium Development Agency</title>
+  <script>
+    window.addEventListener('error', function (e) {
+      const errDiv = document.createElement('div');
+      errDiv.style.cssText = 'position:fixed;top:0;left:0;right:0;background:red;color:white;z-index:999999;padding:20px;font-size:16px;white-space:pre-wrap;overflow:auto;max-height:100vh;';
+      errDiv.innerHTML = 'GLOBAL ERROR: ' + e.message + '<br>' + e.filename + ':' + e.lineno + '<br><br>' + (e.error ? e.error.stack : '');
+      document.body.appendChild(errDiv);
+    });
+    window.addEventListener('unhandledrejection', function (e) {
+      const errDiv = document.createElement('div');
+      errDiv.style.cssText = 'position:fixed;top:0;left:0;right:0;background:red;color:white;z-index:999999;padding:20px;font-size:16px;white-space:pre-wrap;overflow:auto;max-height:100vh;';
+      errDiv.innerHTML = 'PROMISE REJECTION: ' + (e.reason ? (e.reason.message || e.reason) + '<br><br>' + e.reason.stack : 'Unknown reason');
+      document.body.appendChild(errDiv);
+    });
+  </script>
   <meta name="description"
     content="Meet Patel is a full-stack engineer and designer crafting luxury web products for global brands. Building premium digital experiences with quality and precision.">
   <meta name="google-site-verification" content="kwSkiHlkoxTmBPurTDHJckO4Qmt6ClMLKSR804scw1A" />

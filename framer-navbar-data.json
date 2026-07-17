@@ -1,0 +1,29 @@
+{
+  "type": "ComponentInstanceNode",
+  "id": "c4uQ3sFA1",
+  "component": "xDAWNj5cS",
+  "$rect": {
+    "height": 70
+  },
+  "$componentDisplayName": "Navigation Bar",
+  "attributes": {
+    "$control__variant": "Primary",
+    "$control__gap": "80",
+    "$control__pageVariant": "All Active",
+    "$control__home": "/",
+    "$control__portfolio": "/work/portfolio",
+    "$control__about": "/about",
+    "$control__contact": "/contact",
+    "position": "absolute",
+    "left": "24px",
+    "right": "24px",
+    "top": "24px",
+    "bottom": "null",
+    "centerAnchorX": "50%",
+    "centerAnchorY": "7.38%",
+    "constraintsLocked": true,
+    "width": "1152px",
+    "height": "auto",
+    "zIndex": "2"
+  }
+}

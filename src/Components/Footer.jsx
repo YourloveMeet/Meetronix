@@ -1,110 +1,117 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { Github, Linkedin, Twitter, ArrowUp, Instagram, Mail, Layout } from 'lucide-react';
-import { personalData } from '../data/personalData';
-import { navLinks, footerData } from '../data/navigationData';
+import BlurText from './BlurText';
+import heroTxt from '../assets/Images/HeroTxt.webp';
 
 const Footer = () => {
-    const scrollToTop = () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    };
+    const sectionRef = useRef(null);
+
+    // Track scroll to animate the slanted reveal.
+    // Completes when the top of the footer hits the center of the viewport, ensuring full animation before reaching page bottom.
+    const { scrollYProgress } = useScroll({
+        target: sectionRef,
+        offset: ["start end", "center center"]
+    });
+
+    const clipPath = useTransform(
+        scrollYProgress,
+        [0, 1],
+        [
+            'polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)',
+            'polygon(0% 100%, 100% 0%, 100% 100%, 0% 100%)'
+        ]
+    );
 
     return (
-        <footer className="bg-cream-dark pt-24 pb-12 border-t border-border/40 selection:bg-terracotta selection:text-white relative overflow-hidden">
-            {/* Background Accent */}
-            <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-terracotta opacity-[0.03] blur-[100px] rounded-full -translate-x-1/2 translate-y-1/2" />
-            
-            <div className="container-custom relative z-10">
-                <div className="grid lg:grid-cols-2 gap-20 mb-20">
-                    {/* Left: Branding & Tagline */}
-                    <div className="space-y-10">
-                        <div className="space-y-6">
-                            <h2 className="text-5xl md:text-7xl font-display text-text-primary tracking-tighter">
-                                Let's build the<br/>
-                                <span className="text-terracotta font-normal">extraordinary.</span>
-                            </h2>
-                            <p className="text-lg font-sans font-light text-text-secondary leading-relaxed max-w-md">
-                                Developing digital products for founders who value engineering resilience and modern aesthetics.
-                            </p>
+        <section ref={sectionRef} className="relative z-50 w-full bg-[#0d0d0d] text-white pt-16 md:pt-24 pb-8">
+
+            {/* The Slanted Top Transition protruding upwards over the previous section */}
+            <motion.div
+                className="absolute left-0 w-full h-[20vw] bg-[#0d0d0d] origin-bottom"
+                style={{ top: "-19.5vw", clipPath }}
+            ></motion.div>
+
+            <div className="container-custom relative mx-auto max-w-[1440px] px-[24px]">
+
+                {/* Top Row: Let's work together & Links */}
+                <div className="w-full flex flex-col md:flex-row justify-between items-start pt-4 md:pt-[4vw]">
+
+                    {/* Left Side */}
+                    <div className="flex flex-col">
+                        <div className="text-[44px] md:text-[70px] lg:text-[90px] font-[500] leading-[1.05] tracking-tight">
+                            <BlurText
+                                text="Let's work together"
+                                delay={20}
+                                animateBy="words"
+                                direction="bottom"
+                                className="text-[#888] block"
+                            />
+                            <BlurText
+                                text="trevonkastudios@gmail.com"
+                                delay={20}
+                                animateBy="words"
+                                direction="bottom"
+                                className="text-white block tracking-tighter mt-1 text-[20px] xs:text-[24px] sm:text-[36px] md:text-[60px] lg:text-[75px] xl:text-[90px]"
+                            />
                         </div>
-                        
-                        <div className="flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-16">
-                            <a href={`mailto:${personalData.email}`} className="group flex flex-col">
-                                <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-text-muted mb-1">Direct Communication</span>
-                                <span className="text-lg font-display text-text-primary group-hover:text-terracotta transition-colors border-b-2 border-transparent group-hover:border-terracotta/20 pb-1">
-                                    {personalData.email}
-                                </span>
-                            </a>
-                            <a href={`tel:${personalData.phone}`} className="group flex flex-col">
-                                <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-text-muted mb-1">WhatsApp / Call</span>
-                                <span className="text-lg font-display text-text-primary group-hover:text-terracotta transition-colors border-b-2 border-transparent group-hover:border-terracotta/20 pb-1">
-                                    {personalData.phone}
-                                </span>
-                            </a>
-                        </div>
+                        <Link to="/contact" className="flex flex-col group w-[180px] mt-12 md:mt-20">
+                            <div className="flex items-center justify-between pb-3 border-b border-white/20 group-hover:border-white transition-colors relative">
+                                <span className="text-white font-[600] text-[15px] tracking-tight">Contact Now</span>
+                                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="square" strokeLinejoin="miter" className="transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">
+                                    <path d="M7 7h10v10M17 7L7 17" />
+                                </svg>
+                            </div>
+                        </Link>
                     </div>
 
-                    {/* Right: Navigation Links */}
-                    <div className="grid grid-cols-2 gap-12 lg:pl-20">
-                        <div className="space-y-8">
-                            <h4 className="text-[11px] font-bold uppercase tracking-[.4em] text-text-muted underline decoration-terracotta/20 underline-offset-8">Explore</h4>
-                            <ul className="space-y-4">
-                                {navLinks.map((link, idx) => (
-                                    <li key={idx}>
-                                        <Link to={link.path} className="text-[12px] font-bold uppercase tracking-widest text-text-primary hover:text-terracotta transition-colors block py-1">
-                                            {link.label}
-                                        </Link>
-                                    </li>
-                                ))}
-                            </ul>
+                    {/* Right Side */}
+                    <div className="flex flex-col w-full md:w-[320px] mt-16 md:mt-0 pt-2 md:pt-6">
+                        {[
+                            { n: '01', l: 'Home', p: '/' },
+                            { n: '02', l: 'Portfolio', p: '/portfolio' },
+                            { n: '03', l: 'About', p: '/about' },
+                            { n: '04', l: 'Contact', p: '/contact' }
+                        ].map((item, i) => (
+                            <Link key={i} to={item.p} className={`flex justify-between items-center py-5 text-[14px] font-[500] text-white cursor-pointer hover:opacity-70 transition-opacity ${i !== 0 ? 'border-t border-white/10' : ''}`}>
+                                <span>{item.l}</span>
+                                <span className="text-white/40 text-[11px] font-normal">{item.n}</span>
+                            </Link>
+                        ))}
+                    </div>
+
+                </div>
+
+                {/* Middle Crosshairs */}
+                <div className="w-full flex justify-between items-center py-[24px] md:py-[32px] opacity-40 text-[14px] font-light">
+                    <span>+</span>
+                    <span>+</span>
+                    <span>+</span>
+                </div>
+
+                {/* Bottom Logo Image */}
+                <div className="w-full flex flex-col relative mt-4 md:mt-6">
+                    <div className="w-full">
+                        <img
+                            src={heroTxt}
+                            alt="TRAVONKA Logo"
+                            className="w-full h-auto object-cover"
+                        />
+                    </div>
+
+                    <div className="absolute bottom-[2vw] md:bottom-[3vw] right-0 md:right-[1vw] flex items-center gap-4 md:gap-6 text-[12px] md:text-[13px] font-[500] text-white">
+                        <span>© 2025</span>
+                        <div className="flex gap-[3px] opacity-50">
+                            {[...Array(11)].map((_, i) => (
+                                <div key={i} className="w-[1px] h-[10px] md:h-[12px] bg-white"></div>
+                            ))}
                         </div>
-                        
-                        <div className="space-y-8">
-                            <h4 className="text-[11px] font-bold uppercase tracking-[.4em] text-text-muted underline decoration-terracotta/20 underline-offset-8">Social Connect</h4>
-                            <ul className="space-y-4">
-                                <li>
-                                    <a href={personalData.github} target="_blank" rel="noreferrer" className="text-sm font-bold uppercase tracking-widest text-text-primary hover:text-terracotta transition-colors flex items-center gap-2">
-                                        GitHub
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href={personalData.linkedin} target="_blank" rel="noreferrer" className="text-sm font-bold uppercase tracking-widest text-text-primary hover:text-terracotta transition-colors flex items-center gap-2">
-                                        LinkedIn
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href={personalData.instagram} target="_blank" rel="noreferrer" className="text-sm font-bold uppercase tracking-widest text-text-primary hover:text-terracotta transition-colors flex items-center gap-2">
-                                        Instagram
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
+                        <span>19'</span>
                     </div>
                 </div>
 
-                {/* Bottom Bar */}
-                <div className="flex flex-col md:flex-row justify-between items-center pt-12 border-t border-border/20 gap-8">
-                    <div className="flex items-center gap-6">
-                        <div className="px-4 py-1.5 bg-terracotta text-white rounded-full text-[9px] font-bold uppercase tracking-widest">
-                            Established 2020
-                        </div>
-                        <span className="text-[10px] font-bold uppercase tracking-[.4em] text-text-muted">© {new Date().getFullYear()} Meetronix</span>
-                    </div>
-
-                    <button 
-                        onClick={scrollToTop}
-                        className="group flex items-center gap-4 text-[10px] font-bold uppercase tracking-[.4em] text-text-muted hover:text-terracotta transition-colors"
-                    >
-                        Back to Top <ArrowUp size={14} className="group-hover:-translate-y-1 transition-transform" />
-                    </button>
-                    
-                    <div className="text-[10px] font-bold uppercase tracking-[.4em] text-text-muted">
-                        Ahmedabad / Remote / Worldwide
-                    </div>
-                </div>
             </div>
-        </footer>
+        </section>
     );
 };
 

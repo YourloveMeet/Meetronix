@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Globe, Smartphone, Database, Gamepad2, Layers, Cpu, Zap, ShieldCheck } from 'lucide-react';
 import RevealOnScroll from './Common/RevealOnScroll';
+import BlurText from './BlurText';
 import { skillCategories, complementaryTools } from '../data/skillsData';
 
 const iconMap = {
@@ -88,9 +89,13 @@ const Skills = () => {
                             <span className="text-[10px] uppercase tracking-[.4em] font-bold text-terracotta">Technical Intelligence</span>
                             <div className="w-12 h-[1px] bg-border" />
                         </div>
-                        <h2 className="text-5xl md:text-7xl font-display text-text-primary leading-tight tracking-tight mb-8">
-                            Core Expertise
-                        </h2>
+                        <BlurText
+                            text="Core Expertise"
+                            delay={30}
+                            animateBy="words"
+                            direction="bottom"
+                            className="text-5xl md:text-7xl font-display text-text-primary leading-tight tracking-tight mb-8"
+                        />
                         <p className="text-lg font-sans font-light text-text-secondary max-w-2xl leading-relaxed">
                             Engineering stacks mastered for high-performance interfaces and scalable foundations.
                         </p>

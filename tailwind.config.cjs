@@ -1,44 +1,39 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-    content: [
-        "./index.html",
-        "./src/**/*.{js,ts,jsx,tsx}",
-    ],
-    theme: {
-        extend: {
-            colors: {
-                cream: "#FAF7F2",
-                "cream-dark": "#F2EDE4",
-                "warm-white": "#FFFCF8",
-                terracotta: "#C4622D",
-                "terra-light": "#E8896A",
-                "terra-dark": "#9A4520",
-                "terra-muted": "#F0D5C8",
-                charcoal: "#1C1917",
-                "text-primary": "#2C2420",
-                "text-secondary": "#7A6A62",
-                "text-muted": "#AFA099",
-                border: "var(--border)",
-                "border-strong": "var(--border-strong)",
-                "glass-bg": "var(--glass-bg)",
-                "glass-border": "var(--glass-border)",
-            },
-            fontFamily: {
-                sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-                display: ['"Outfit"', 'sans-serif'],
-            },
-            animation: {
-                'blob': 'warm-blob 12s infinite ease-in-out',
-            },
-            keyframes: {
-                'warm-blob': {
-                    '0%': { transform: 'translate(0px, 0px) scale(1)', opacity: 0.1 },
-                    '33%': { transform: 'translate(40px, -60px) scale(1.2)', opacity: 0.08 },
-                    '66%': { transform: 'translate(-30px, 30px) scale(0.9)', opacity: 0.12 },
-                    '100%': { transform: 'translate(0px, 0px) scale(1)', opacity: 0.1 },
-                }
-            }
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {
+      colors: {
+        background: 'var(--background)',
+        foreground: 'var(--foreground)',
+        primary: 'var(--primary)',
+        'primary-foreground': 'var(--primary-foreground)',
+        muted: 'var(--muted)',
+        'muted-foreground': 'var(--muted-foreground)',
+        border: 'var(--border)',
+        accent: 'var(--accent)',
+      },
+      fontFamily: {
+        sans: ['"Inter"', 'sans-serif'], // Most standard Framer sites use Inter
+      },
+      animation: {
+        'fade-in': 'fadeIn 0.5s ease-out',
+        'slide-up': 'slideUp 0.5s ease-out',
+      },
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: 0 },
+          '100%': { opacity: 1 },
         },
+        slideUp: {
+          '0%': { opacity: 0, transform: 'translateY(20px)' },
+          '100%': { opacity: 1, transform: 'translateY(0)' },
+        }
+      }
     },
-    plugins: [],
+  },
+  plugins: [],
 }

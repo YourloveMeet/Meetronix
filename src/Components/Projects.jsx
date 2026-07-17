@@ -4,6 +4,7 @@ import { ArrowRight, Sparkles } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { projectsData } from '../data/projectsData';
 import RevealOnScroll from './Common/RevealOnScroll';
+import BlurText from './BlurText';
 
 const Projects = () => {
     // Show only the top 3 featured projects on Home
@@ -18,9 +19,13 @@ const Projects = () => {
                             <span className="text-[10px] uppercase tracking-[.4em] font-bold text-terracotta">Selected Works</span>
                             <div className="w-12 h-[1px] bg-border" />
                         </div>
-                        <h2 className="text-5xl md:text-7xl font-display text-text-primary leading-tight tracking-tight">
-                            Elite Showcase
-                        </h2>
+                        <BlurText
+                            text="Elite Showcase"
+                            delay={30}
+                            animateBy="words"
+                            direction="bottom"
+                            className="text-5xl md:text-7xl font-display text-text-primary leading-tight tracking-tight"
+                        />
                     </RevealOnScroll>
                     
                     <RevealOnScroll>
@@ -59,7 +64,7 @@ const Projects = () => {
                                     <div className="glass-card p-4 bg-white/90 backdrop-blur-2xl border-white/20 rounded-2xl">
                                         <div className="flex items-center justify-between">
                                             <span className="text-[10px] font-bold uppercase tracking-widest text-text-primary">
-                                                {project.liveUrl ? 'Launch Project' : 'View Case Study'}
+                                                {project.liveUrl ? 'Visit Project' : 'View Case Study'}
                                             </span>
                                             <ArrowRight size={16} className="text-terracotta" />
                                         </div>
