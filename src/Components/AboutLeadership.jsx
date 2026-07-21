@@ -16,7 +16,7 @@ const AboutLeadership = () => {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 md:gap-12 lg:gap-16 w-full max-w-[1000px] mx-auto">
                     {/* Meet Patel */}
-                    <motion.div 
+                    <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -24,10 +24,10 @@ const AboutLeadership = () => {
                         className="flex flex-col gap-5 group cursor-pointer"
                     >
                         <div className="w-full aspect-[4/5] bg-[#e5e5e5] rounded-[5px] overflow-hidden relative">
-                            <img 
-                                src={meetImg} 
-                                alt="Meet Patel" 
-                                className="w-full h-full object-cover grayscale opacity-80 group-hover:scale-105 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]" 
+                            <img
+                                src={meetImg}
+                                alt="Meet Patel"
+                                className="w-full h-full object-cover grayscale opacity-80 group-hover:scale-105 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
                             />
                         </div>
                         <div className="flex flex-col border-t border-black/20 pt-4">
@@ -40,7 +40,7 @@ const AboutLeadership = () => {
                     </motion.div>
 
                     {/* Krish Patel */}
-                    <motion.div 
+                    <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -48,15 +48,15 @@ const AboutLeadership = () => {
                         className="flex flex-col gap-5 group cursor-pointer"
                     >
                         <div className="w-full aspect-[4/5] bg-[#e5e5e5] rounded-[5px] overflow-hidden relative">
-                            <img 
-                                src={krishImg} 
-                                alt="Krish Patel" 
-                                className="w-full h-full object-cover grayscale opacity-80 group-hover:scale-105 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]" 
+                            <img
+                                src={krishImg}
+                                alt="Krish Patel"
+                                className="w-full h-full object-cover grayscale opacity-80 group-hover:scale-105 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
                             />
                         </div>
                         <div className="flex flex-col border-t border-black/20 pt-4">
                             <h3 className="text-[16px] md:text-[18px] font-bold tracking-tight text-black">Krish Patel</h3>
-                            <p className="text-[13px] md:text-[14px] text-black font-semibold mt-1">Co-Founder & Creative Director</p>
+                            <p className="text-[13px] md:text-[14px] text-black font-semibold mt-1">Co-Founder & CTO</p>
                             <p className="text-[14px] text-[#666] tracking-tight font-medium mt-3 leading-relaxed">
                                 Krish drives the creative strategy and visual identity of Trevonka. Blending modern aesthetics with highly intentional design, he crafts the unique digital narratives and premium interactions that elevate and define our clients' brands.
                             </p>

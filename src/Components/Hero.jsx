@@ -2,6 +2,7 @@ import React, { Suspense } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import LiquidHover from './LiquidHover';
+import BlurText from './BlurText';
 import heroBg from '../assets/Images/hero-bg.png';
 import heroTxt from '../assets/Images/HeroTxt.webp';
 
@@ -43,13 +44,23 @@ const Hero = () => {
                 >
                     <div className="flex flex-col gap-4 md:gap-6">
                         <div className="text-[15px] sm:text-[16px] md:text-[24px] lg:text-[28px] font-medium leading-[1.5] md:leading-[1.4] text-white tracking-tight max-w-[280px] md:max-w-[420px] lg:max-w-[480px]">
-                            Pick a plan, submit a job request,<br />
-                            and your <span className="font-bold">イメージ</span> will kickoff<br />
-                            within 24 hours.
+                            <BlurText 
+                                text="Pick a plan, submit a job request, and your イメージ will kickoff within 24 hours." 
+                                initialDelay={2200}
+                                delay={40} 
+                                animateBy="words" 
+                                direction="bottom" 
+                            />
                         </div>
-                        <p className="text-[13px] sm:text-[14px] md:text-[16px] lg:text-[18px] text-white/60 font-normal leading-[1.6] max-w-[280px] md:max-w-[420px] lg:max-w-[480px]">
-                            We specialize in crafting premium digital experiences that elevate modern brands. Our bespoke approach ensures every interaction feels uniquely yours.
-                        </p>
+                        <div className="text-[13px] sm:text-[14px] md:text-[16px] lg:text-[18px] text-white/60 font-normal leading-[1.6] max-w-[280px] md:max-w-[420px] lg:max-w-[480px]">
+                            <BlurText 
+                                text="We specialize in crafting premium digital experiences that elevate modern brands. Our bespoke approach ensures every interaction feels uniquely yours." 
+                                initialDelay={2200}
+                                delay={20} 
+                                animateBy="words" 
+                                direction="bottom" 
+                            />
+                        </div>
                     </div>
 
                     <button className="mt-6 md:mt-8 text-white font-semibold text-[15px] md:text-[16px] flex items-center gap-2 group relative overflow-hidden pb-1">

@@ -14,6 +14,7 @@ const buildKeyframes = (from, steps) => {
 const BlurText = ({
   text = '',
   delay = 200,
+  initialDelay = 0,
   className = '',
   animateBy = 'words',
   direction = 'top',
@@ -77,7 +78,7 @@ const BlurText = ({
         const spanTransition = {
           duration: totalDuration,
           times,
-          delay: (index * delay) / 1000
+          delay: (initialDelay + (index * delay)) / 1000
         };
         spanTransition.ease = easing;
 
