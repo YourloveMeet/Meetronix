@@ -32,7 +32,7 @@ const AboutLeadership = () => {
                         </div>
                         <div className="flex flex-col border-t border-black/20 pt-4">
                             <h3 className="text-[16px] md:text-[18px] font-bold tracking-tight text-black">Meet Patel</h3>
-                            <p className="text-[13px] md:text-[14px] text-black font-semibold mt-1">Co-Founder & Technical Director</p>
+                            <p className="text-[13px] md:text-[14px] text-black font-semibold mt-1">Co-Founder & CEO</p>
                             <p className="text-[14px] text-[#666] tracking-tight font-medium mt-3 leading-relaxed">
                                 Meet leads the engineering and architectural vision at Trevonka. With a deep focus on scalable infrastructure and seamless digital integration, he ensures that every bespoke experience is built on a foundation of technical excellence and resilience.
                             </p>
