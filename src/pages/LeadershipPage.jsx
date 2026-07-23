@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
-import meetImg from '../assets/Images/meet-patel.jpg';
+import meetImg from '../assets/Proffesional Pic Meet.png';
 import krishImg from '../assets/Images/krish-patel.jpg';
 import Footer from '../Components/Footer';
 
@@ -102,7 +102,7 @@ const LeadershipPage = () => {
                         transition={{ duration: 0.8, ease: "easeOut" }}
                         src={meetImg}
                         alt="Meet Patel"
-                        className="w-full aspect-[3/4] object-cover rounded-lg grayscale hover:grayscale-0 transition-all duration-700 shadow-2xl"
+                        className="w-full aspect-[3/4] object-cover rounded-lg transition-all duration-700 shadow-2xl"
                     />
                     <div className="flex flex-col gap-2">
                         <h3 className="text-[20px] font-bold tracking-tight">Meet Patel</h3>
@@ -176,7 +176,7 @@ const LeadershipPage = () => {
                         transition={{ duration: 0.8, ease: "easeOut" }}
                         src={krishImg}
                         alt="Krish Patel"
-                        className="w-full aspect-[3/4] object-cover rounded-lg grayscale hover:grayscale-0 transition-all duration-700 shadow-2xl"
+                        className="w-full aspect-[3/4] object-cover rounded-lg transition-all duration-700 shadow-2xl"
                     />
                     <div className="flex flex-col gap-2 text-right w-full">
                         <h3 className="text-[20px] font-bold tracking-tight">Krish Patel</h3>
