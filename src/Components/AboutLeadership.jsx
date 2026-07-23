@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import meetImg from '../assets/Images/meet-patel.jpg';
+import meetImg from '../assets/Proffesional Pic Meet.png';
 import krishImg from '../assets/Images/krish-patel.jpg';
 
 const AboutLeadership = () => {
@@ -27,7 +27,7 @@ const AboutLeadership = () => {
                             <img
                                 src={meetImg}
                                 alt="Meet Patel"
-                                className="w-full h-full object-cover grayscale opacity-80 group-hover:scale-105 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                                className="w-full h-full object-cover opacity-80 group-hover:scale-105 group-hover:opacity-100 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
                             />
                         </div>
                         <div className="flex flex-col border-t border-black/20 pt-4">
@@ -51,7 +51,7 @@ const AboutLeadership = () => {
                             <img
                                 src={krishImg}
                                 alt="Krish Patel"
-                                className="w-full h-full object-cover grayscale opacity-80 group-hover:scale-105 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                                className="w-full h-full object-cover opacity-80 group-hover:scale-105 group-hover:opacity-100 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
                             />
                         </div>
                         <div className="flex flex-col border-t border-black/20 pt-4">
